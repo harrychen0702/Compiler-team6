@@ -1,0 +1,13 @@
+import java_cup.runtime.*;//预先声明 
+parser code
+{:
+  //java code
+:}
+
+//终结符和非终结符的说明 
+
+
+//终结符的优先级和结合性 
+
+
+//文法 
