@@ -39,27 +39,27 @@ Negative={-Number}
 
 
 //**Keywords*************
-bool
-int
-rat
-float
-char
+bool {return symbol(sym.BOOL);}
+int {return symbol(sym.INT);}
+rat {return symbol(sym.RAT);}
+float {return symbol(sym.FLOAT);}
+char    {return symbol(sym.CHAR);}
 
-dict
-seq
+dict {return symbol(sym.DICT);}
+seq {return symbol(sym.SEQ);};
 
-top
-len
+top {return symbol(sym.TOP);}
+len {return symbol(sym.LEN);}
 
-","
-":"
-"{"
-"}"
-";"
-"("
-")"
-"."
-"?"
+"," {return symbol(sym.COMMA);}
+":" {return symbol(sym.COLON);}
+"{" {return symbol(sym.LBRACE):}
+"}" {return symbol(sym.RBRACE);}
+";" {return symbol(sym.SEMICOLON);}
+"(" {return symbol(sym.LPAREN);}
+")" {return symbol(sym.RPAREN);}
+"." {return symbol(sym.DOT);}
+"?" {return symbol(sym.QUESTION);}
 
 
 
@@ -70,20 +70,20 @@ len
 
 
 //**Expression************
-"null"
-"fdef"
+"null"  {return symbol(sym.NULL);}
+"fdef"  {return symbol(sym.FDEF);}
 
 //**Statements************
-"read"
-"print"
-"if"
-"then"
-"fi"
-"loop"
-"pool"
-"else"
-"break"
-"return"
+"read"  {return symbol(sym.READ);}
+"print" {return symbol(sym.PRINT);}
+"if"    {return symbol(sym.IF);}
+"then"  {return symbol(sym.THEN);}
+"fi"    {return symbol(sym.ENDIF);}
+"loop"  {return symbol(sym.LOOP);}
+"pool"  {return symbol(sym.POOL);}
+"else"  {return symbol(sym.ELSE);}
+"break" {return symbol(sym.BREAK);}
+"return"    {return symbol(sym.RETURN);}
 
 
 
