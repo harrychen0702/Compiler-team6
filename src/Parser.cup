@@ -2,7 +2,7 @@ import java_cup.runtime.*;//预先声明
 parser code
 {:
   //java code, 这个处理器代码将被直接放在产生的处理器的类定义中
-public boolean syntaxErrors;  
+public boolean syntaxErrors;
 public void syntax_error(Symbol current_token) {  
     report_error(
         "Syntax error at line " + (current_token.left+1) + ", column "
@@ -15,14 +15,13 @@ public void syntax_error(Symbol current_token) {
 //终结符声明的语法是：terminal classname name1; classname 是对象的类型，如 整数(Integer)
 
 // terminals
-terminal PLUS,MINUS,TIMES,DIVDE;
+terminal PLUS,MINUS,TIMES,DIVDE,POWER;
 terminal SEMI,LPAREN,RPAREN;
 
 //nonterminal
 
 non terminal expr_list;
 //把所有lexer中返回的词类字符标成terminal
-
 
 // Eliminating Ambiguity   终结符的优先级和结合性 (消除二义性)
 //Precedences
