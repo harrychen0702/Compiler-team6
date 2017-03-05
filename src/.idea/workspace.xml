@@ -15,27 +15,28 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Parser.cup" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Parser.cup" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Parser.cup">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="608">
-              <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+            <state relative-caret-position="318">
+              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding>
-                <marker date="1488673658714" expanded="true" signature="48:120" ph="{...}" />
-                <marker date="1488673658714" expanded="true" signature="167:296" ph="{...}" />
+                <marker date="1488674527561" expanded="true" signature="48:120" ph="{...}" />
+                <marker date="1488674527561" expanded="true" signature="167:296" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Lexer.lex" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Lexer.lex" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Lexer.lex">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="31" column="2" lean-forward="false" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="2" />
+            <state relative-caret-position="261">
+              <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
               <folding>
                 <marker date="1488673286192" expanded="true" signature="7:26" ph="..." />
                 <marker date="1488673286192" expanded="true" signature="7:39" ph="..." />
+                <marker date="1488673286192" expanded="true" signature="463:2442" ph="{...}" />
                 <marker date="1488673286192" expanded="true" signature="496:520" ph="{...}" />
                 <marker date="1488673286192" expanded="true" signature="527:550" ph="{...}" />
                 <marker date="1488673286192" expanded="true" signature="557:580" ph="{...}" />
@@ -106,8 +107,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="664" />
-    <option name="y" value="313" />
+    <option name="x" value="829" />
+    <option name="y" value="44" />
     <option name="width" value="1932" />
     <option name="height" value="1092" />
   </component>
@@ -379,7 +380,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="664" y="313" width="1932" height="1092" extended-state="0" />
+    <frame x="829" y="44" width="1932" height="1092" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -419,24 +420,14 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Parser.cup">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding>
-            <marker date="1488673658714" expanded="true" signature="48:120" ph="{...}" />
-            <marker date="1488673658714" expanded="true" signature="167:296" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Lexer.lex">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="31" column="2" lean-forward="false" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="2" />
+        <state relative-caret-position="261">
+          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding>
             <marker date="1488673286192" expanded="true" signature="7:26" ph="..." />
             <marker date="1488673286192" expanded="true" signature="7:39" ph="..." />
+            <marker date="1488673286192" expanded="true" signature="463:2442" ph="{...}" />
             <marker date="1488673286192" expanded="true" signature="496:520" ph="{...}" />
             <marker date="1488673286192" expanded="true" signature="527:550" ph="{...}" />
             <marker date="1488673286192" expanded="true" signature="557:580" ph="{...}" />
@@ -486,6 +477,17 @@
             <marker date="1488673286192" expanded="true" signature="2274:2305" ph="{...}" />
             <marker date="1488673286192" expanded="true" signature="2339:2380" ph="{...}" />
             <marker date="1488673286192" expanded="true" signature="2386:2428" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Parser.cup">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <marker date="1488674527561" expanded="true" signature="48:120" ph="{...}" />
+            <marker date="1488674527561" expanded="true" signature="167:296" ph="{...}" />
           </folding>
         </state>
       </provider>
