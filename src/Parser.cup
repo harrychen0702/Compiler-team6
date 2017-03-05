@@ -15,12 +15,12 @@ public void syntax_error(Symbol current_token) {
 //终结符声明的语法是：terminal classname name1; classname 是对象的类型，如 整数(Integer)
 
 // terminals
-terminal PLUS,MINUS,TIMES,DIVDE,POWER;
+terminal PLUS,MINUS,TIMES,DIVIDE,POWER,MOD,UMINUS;
 terminal SEMI,LPAREN,RPAREN;
 terminal SEQ,TOP,INT,CHAR,RAT,FLOAT,TDEF,FDEF;
 //nonterminal
 
-non terminal decl,expr,stmt;
+non terminal decl,expr,stmt,program;
 //把所有lexer中返回的词类字符标成terminal
 
 // Eliminating Ambiguity   终结符的优先级和结合性 (消除二义性)
@@ -40,3 +40,4 @@ precedence left UMINUS;
 //seq.len
 //returntype
 //function name
+start with program;

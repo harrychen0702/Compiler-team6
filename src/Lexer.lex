@@ -12,11 +12,51 @@ import sym;
 %cup     //使得与cup产生的处理器兼容
 %unicode
 
+%{
+      StringBuffer string = new StringBuffer();
+
+      private Symbol symbol(int type) {
+        return new Symbol(type, yyline, yycolumn);
+      }
+      private Symbol symbol(int type, Object value) {
+        return new Symbol(type, yyline, yycolumn, value);
+      }
+%}
 
 //***宏定义***************
 Letter = [a-zA-Z]
 Digit = [0-9]
 
+Letter = [a-zA-Z]
+Digit = [0-9]
+
+LineTerminator = \n | \r | \r\n
+InputCharacter = [^\r\n]
+
+Whitespace = [ ] | \t | \f | {LineTerminator}
+
+//Point 3
+Comment = {FirstComment} | {SecondComment}
+FirstComment = "#" {InputCharacter}* {LineTerminator}?
+SecondComment = "/#" [^#] ~ "#/" | "/#" "#" +"/" | "/#" "#" + [^/#] ~ "#/"
+
+//Point 4
+Identifier = {Letter} ({Letter} | _ | {Digit})*
+
+//Point 5
+Character = '[^' \r\n\'\\ ']'
+
+//Point 6
+Boolean = 'T' | 'F'
+
+//Point 7
+NonZeroDigit = [1-9]
+NegativeInteger = "-" {NonZeroDigit} {Digit}*
+PositiveInteger = (0*) {NonZeroDigit} {Digit}*
+Integer = {NegativeInteger} | {PositiveInteger} | 0
+Fractional = ({Integer} | 0) "/" {Integer}
+Rational = ({Integer} "_" {Fractional}) | {Integer} | {Fractional}
+Float = {Integer} "." {Digit}+
 //Comments
 //Identifier
 //
@@ -66,8 +106,11 @@ len {return symbol(sym.LEN);}
 
 
 //**Declaration***********
-"tdef"{ return symbol(sym.TDEF); }    //type define
-"alias"{ return symbol(sym.ALIAS); }  //别名
+//type define
+"tdef" { return symbol(sym.TDEF); }
+"fdef"	{ return symbol(sym.FDEF); }
+ //别名
+"alias" { return symbol(sym.ALIAS); }
 
 
 //**Expression************
@@ -91,39 +134,30 @@ len {return symbol(sym.LEN);}
 
 //**Boolean***************
 "!" { return symbol(sym.NOT); }
-"&&"{ return symbol(sym.AND); }
-"||"{ return symbol(sym.OR); }
-"=>"{ return symbol(sym.IMPLICATION); }
+"&&" { return symbol(sym.AND); }
+"||" { return symbol(sym.OR); }
+"=>" { return symbol(sym.IMPLICATION); }
 
 //**Numeric***************
-"+"{ return symbol(sym.PLUS); }
-"-"{ return symbol(sym.MINUS); }
-"*"{ return symbol(sym.MULTIPLE); }
-"/"{ return symbol(sym.DIVIDE); }
-"^"{ return symbol(sym.POWER); }
+"+" { return symbol(sym.PLUS); }
+"-" { return symbol(sym.MINUS); }
+"*" { return symbol(sym.MULTIPLE); }
+"/" { return symbol(sym.DIVIDE); }
+"^" { return symbol(sym.POWER); }
 
 //**Dict operator
-"in"{ return symbol(sym.IN); }
-"::"{ return symbol(sym.CONCATENATION); }
+"in" { return symbol(sym.IN); }
+"::" { return symbol(sym.CONCATENATION); }
 
 //**Comparison
-"<"{ return symbol(sym.LEFT_SHARP); }
-"<="{ return symbol(sym.LEFT_SHARP_EQUAL); }
-"="{ return symbol(sym.EQUAL); }
-"!="{ return symbol(sym.NOT_EQUAL); }
+"<" { return symbol(sym.LEFT_SHARP); }
+"<=" { return symbol(sym.LEFT_SHARP_EQUAL); }
+"=" { return symbol(sym.EQUAL); }
+"!=" { return symbol(sym.NOT_EQUAL); }
 
 //**Symbol****************
-"["{ return symbol(sym.LEFT_SQUARE_BRACKET); }
-"]"{ return symbol(sym.RIGHT_SQUARE_BRACKET); }
-
-
-
-
-
-
-
-
-
+"[" { return symbol(sym.LEFT_SQUARE_BRACKET); }
+"]" { return symbol(sym.RIGHT_SQUARE_BRACKET); }
 
 
 

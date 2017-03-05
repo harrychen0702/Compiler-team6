@@ -1,5 +1,5 @@
 import java_cup.runtime.*;
-
+import sym;
 parser code
 {:
   public void syntax_error(Symbol current_token)
