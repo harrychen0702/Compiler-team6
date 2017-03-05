@@ -42,9 +42,9 @@ non terminal decl,expr,stmt,program;
 precedence left PLUS, MINUS;
 precedence left TIMES, DIVIDE, MOD;
 precedence left UMINUS;
-precedence left CONCAT, AND, OR;
-precedence right POW, IN;
-precedence nonassoc NOT, L_ANGLE, LESSEQ, EQEQ, NOTEQ, L_SQUARE;
+precedence left CONCATENATION, AND, OR;
+precedence right POWER, IN;
+//precedence nonassoc NOT, L_ANGLE, LESSEQ, EQEQ, NOTEQ, L_SQUARE;
 
 
 
