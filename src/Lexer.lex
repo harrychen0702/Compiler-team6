@@ -5,7 +5,8 @@ import sym;
 
 %%    //*****************参数设置和声明段 (参数，词法状态，和宏定义)***********
 
-%class Lexer  //将生成的类命名为Lexer
+%class Lexer
+//将生成的类命名为Lexer
 %line 
 %column 
 %cup     //使得与cup产生的处理器兼容
@@ -16,16 +17,16 @@ import sym;
 Letter = [a-zA-Z]
 Digit = [0-9]
 
-Comments
-Identifier
-
-Character
-Boolean
-Number
-Integer
-Rational
-Float
-Negative={-Number}
+//Comments
+//Identifier
+//
+//Character
+//Boolean
+//Number
+//Integer
+//Rational
+//Float
+//Negative={-Number}
 
 
 
@@ -46,7 +47,7 @@ float {return symbol(sym.FLOAT);}
 char    {return symbol(sym.CHAR);}
 
 dict {return symbol(sym.DICT);}
-seq {return symbol(sym.SEQ);};
+seq {return symbol(sym.SEQ);}
 
 top {return symbol(sym.TOP);}
 len {return symbol(sym.LEN);}
