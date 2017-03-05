@@ -17,10 +17,10 @@ public void syntax_error(Symbol current_token) {
 // terminals
 terminal PLUS,MINUS,TIMES,DIVDE,POWER;
 terminal SEMI,LPAREN,RPAREN;
-
+terminal SEQ,TOP,INT,CHAR,RAT,FLOAT,TDEF,FDEF;
 //nonterminal
 
-non terminal expr_list;
+non terminal decl,expr,stmt;
 //把所有lexer中返回的词类字符标成terminal
 
 // Eliminating Ambiguity   终结符的优先级和结合性 (消除二义性)
