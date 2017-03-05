@@ -1,0 +1,189 @@
+import java_cup.runtime.*;
+
+parser code
+{:
+  public void syntax_error(Symbol current_token)
+  {
+    syntaxErrors = true;
+    report_error(
+              "Syntax error at line " + (current_token.left+1)
+              + ", column " + (current_token.right) + "/n", null);
+  }
+
+  public boolean syntaxErrors = false;
+:}
+
+
+//terminal
+
+//datatype 
+terminal    BOOL, CHAR, DICT, FLOAT, IDENTIFIER, INT, RAT, SEQ, TOP,STRING,CHAR_LITERAL,BOOL_LITERAL,STRING_LITERAL,INT_LITERAL,RAT_LITERAL,FLOAT_LITERAL;
+
+//operator
+terminal    AND, OR, NOT, IMPLY, PLUS, MINUS, MULT, DIV, POW, IN, CONCAT;
+
+//declaration
+terminal    TDEF, FDEF, ALIAS, VOID;
+
+//statement
+terminal MAIN, RETURN, READ, PRINT, WHILE, FORALL, IF, THEN, ELSE, ELIF, ENDIF, DO, ENDDO;
+
+//punctuation
+terminal L_ANGLE, R_ANGLE, L_ROUND, R_ROUND, L_SQUARE, R_SQUARE, 
+         L_CURLY, R_CURLY, COLON, EQ, COMMA, DOT, SEMICOLON, LESSEQ, EQEQ, NOTEQ;
+
+//non terminal
+nonterminal program, program_part, program_part_list;
+nonterminal operator, var, condition;
+nonterminal expr, expr_aux, expr_list; 
+nonterminal declar, declar_list; 
+nonterminal stmt, stmt_list, stmt_tdef, stmt_assign, stmt_input, stmt_output, stmt_func_call, 
+            stmt_declar, stmt_declar_ini, stmt_return, stmt_if, stmt_while, stmt_forall, stmt_alias; 
+nonterminal elif_list;
+nonterminal func_call, func_fdef, func_main, func_body; 
+nonterminal datatype, prim_datatype, aggr_datatype, num;
+nonterminal literal, prim_literal, aggr_literal, num_literal;
+nonterminal dict_def, seq_def, dict_literal, seq_literal;
+nonterminal dict_pair, dict_list, seq_list;
+nonterminal aggr_get_index, slice, field_ref;
+nonterminal exprid_surfix, var_surfix;
+nonterminal returntype;
+
+//precedence
+precedence left PLUS, MINUS;
+precedence left DIV, MULT;
+precedence left CONCAT, AND, OR;
+precedence right POW, IN;
+precedence nonassoc NOT, L_ANGLE, LESSEQ, EQEQ, NOTEQ, L_SQUARE;
+
+//Productions
+
+start with program;
+
+program ::= program_part_list func_main program_part_list
+          | program_part_list func_main
+          | func_main program_part_list
+          | func_main;
+
+program_part      ::= stmt_declar
+                    | stmt_declar_ini
+                    | stmt_tdef
+                    | stmt_alias
+                    | func_fdef;
+program_part_list ::= program_part program_part_list
+                    | program_part;
+
+//generic
+
+//statement
+stmt           ::= stmt_tdef
+                | stmt_assign
+                | stmt_input
+                | stmt_output
+                | stmt_func_call
+                | stmt_declar
+                | stmt_declar_ini
+                | stmt_return
+                | stmt_if
+                | stmt_while
+                | stmt_forall
+                | stmt_alias;
+stmt_list      ::= stmt stmt_list
+                | stmt;
+
+stmt_tdef      ::= TDEF IDENTIFIER L_CURLY declar_list 
+                  R_CURLY SEMICOLON; 
+stmt_assign    ::= var EQ expr_list SEMICOLON;
+stmt_input     ::= READ var SEMICOLON;
+stmt_output    ::= PRINT expr SEMICOLON;
+stmt_func_call ::= func_call SEMICOLON;
+stmt_declar    ::= declar SEMICOLON;
+stmt_declar_ini::= declar EQ expr_list SEMICOLON;
+stmt_if        ::= IF condition THEN stmt_list ENDIF
+                | IF condition THEN stmt_list ELSE stmt_list ENDIF
+                | IF condition THEN stmt_list elif_list ELSE 
+                  stmt_list ENDIF
+                | IF condition THEN stmt_list elif_list ENDIF;
+elif_list     ::= ELIF condition THEN stmt_list elif_list
+                | ELIF condition THEN stmt_list;
+stmt_while     ::= WHILE condition DO stmt_list ENDDO;
+stmt_forall    ::= FORALL L_ROUND IDENTIFIER IN IDENTIFIER R_ROUND 
+                  DO stmt_list ENDDO;
+stmt_alias     ::= ALIAS datatype datatype SEMICOLON;
+
+
+stmt_return    ::= RETURN expr_list SEMICOLON
+                | RETURN SEMICOLON;
+
+//Declaration
+declar        ::= datatype literal;
+declar_list   ::= declar COMMA declar_list
+                | declar;
+
+//Expression
+expr          ::= literal expr_aux
+                | func_call expr_aux
+                | NOT expr expr_aux
+                | L_ROUND expr R_ROUND expr_aux;
+expr_aux      ::= operator expr
+                | ;
+expr_list     ::= expr COMMA expr_list
+                | expr;
+
+
+operator      ::= PLUS | MINUS | MULT | DIV | POW
+                | NOT | AND | OR 
+                | L_ANGLE | LESSEQ | EQEQ | NOTEQ
+                | IN | CONCAT;
+
+var           ::= IDENTIFIER var_surfix;
+condition     ::= L_ROUND expr_list R_ROUND
+                | L_ROUND R_ROUND;
+
+/****************** DATATYPE ********************************/
+
+datatype      ::= prim_datatype | aggr_datatype | IDENTIFIER;
+prim_datatype ::= num | CHAR | BOOL | STRING | TOP;
+aggr_datatype ::= dict_def | seq_def;
+num           ::= INT | RAT | FLOAT;
+returntype    ::= datatype | VOID;
+
+literal       ::= prim_literal | aggr_literal 
+                | IDENTIFIER exprid_surfix;
+prim_literal  ::= num_literal | CHAR_LITERAL | BOOL_LITERAL | 
+                  STRING_LITERAL | MINUS num_literal;
+aggr_literal  ::= dict_literal | seq_literal;
+num_literal   ::= INT_LITERAL | RAT_LITERAL | FLOAT_LITERAL;
+
+
+/***************** AGGREGATE DATATYPE ***********************/
+
+/* Dictionary Related */
+dict_def      ::= DICT L_ANGLE datatype COMMA datatype R_ANGLE;
+dict_literal  ::= L_CURLY dict_list R_CURLY
+                | L_CURLY R_CURLY;
+dict_pair     ::= expr COLON expr;
+dict_list     ::= dict_pair COMMA dict_list
+                | dict_pair;
+
+/* Seq Related */
+seq_def       ::= SEQ L_ANGLE datatype R_ANGLE;
+seq_literal   ::= L_SQUARE seq_list R_SQUARE
+                | L_SQUARE R_SQUARE;
+seq_list      ::= expr COMMA seq_list
+                | expr;
+
+/* Aggregate Generic */
+aggr_get_index::= L_SQUARE expr R_SQUARE;
+field_ref     ::= DOT IDENTIFIER;
+slice         ::= L_SQUARE COLON expr R_SQUARE
+                | L_SQUARE expr COLON expr R_SQUARE
+                | L_SQUARE expr COLON R_SQUARE;
+
+var_surfix    ::= field_ref var_surfix
+                | aggr_get_index var_surfix
+                | ;
+exprid_surfix ::= field_ref exprid_surfix
+                | aggr_get_index exprid_surfix
+                | slice
+                | ;
