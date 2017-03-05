@@ -13,7 +13,7 @@ public void syntax_error(Symbol current_token) {
 
 
 
-//终结符和非终结符的说明 
+//terminals and nonterminal 终结符和非终结符的说明
 //终结符声明的语法是：terminal classname name1; classname 是对象的类型，如 整数(Integer)
 
 //把所有lexer中返回的词类字符标成terminal
@@ -23,16 +23,19 @@ public void syntax_error(Symbol current_token) {
 
 
 
-//终结符的优先级和结合性 (消除二义性)
+
+// Eliminating Ambiguity   终结符的优先级和结合性 (消除二义性)
 
 
 
 
 
 
+//CFG 文法
 
-//文法 
 //在文法中的每一个产生式有一个非终结符在左边，然后是 ::=，其后是零个或多个动作，终结符，非终结符等，再后面是一个分号
+
+//production
 
 //seq.len
 //returntype
