@@ -94,7 +94,7 @@ len {return symbol(sym.LEN);}
 
 "," {return symbol(sym.COMMA);}
 ":" {return symbol(sym.COLON);}
-"{" {return symbol(sym.LBRACE):}
+"{" {return symbol(sym.LBRACE);}
 "}" {return symbol(sym.RBRACE);}
 ";" {return symbol(sym.SEMICOLON);}
 "(" {return symbol(sym.LPAREN);}
@@ -162,3 +162,5 @@ len {return symbol(sym.LEN);}
 
 
 }
+
+[^]         { throw new Error("Line " + yyline+1 + ", Column " + yycolumn); }

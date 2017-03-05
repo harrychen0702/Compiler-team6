@@ -1,4 +1,5 @@
-import java_cup.runtime.*;//预先声明 
+import java_cup.runtime.*;//预先声明
+//import sym;
 parser code
 {:
   //java code, 这个处理器代码将被直接放在产生的处理器的类定义中
@@ -41,3 +42,4 @@ precedence left UMINUS;
 //returntype
 //function name
 start with program;
+program ::=PLUS;
