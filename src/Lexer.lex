@@ -1,16 +1,20 @@
 import java_cup.runtime.*; 
-import sym;
+//import sym;
 
 
 
-%%    //*****************参数设置和声明段 (参数，词法状态，和宏定义)***********
+%%
+
+//*****************参数设置和声明段 (参数，词法状态，和宏定义)***********//
 
 %class Lexer
 //将生成的类命名为Lexer
 %line 
 %column 
-%cup     //使得与cup产生的处理器兼容
+%cup
+//使得与cup产生的处理器兼容
 %unicode
+
 
 %{
       StringBuffer string = new StringBuffer();
@@ -27,8 +31,6 @@ import sym;
 Letter = [a-zA-Z]
 Digit = [0-9]
 
-Letter = [a-zA-Z]
-Digit = [0-9]
 
 LineTerminator = \n | \r | \r\n
 InputCharacter = [^\r\n]
@@ -57,19 +59,6 @@ Integer = {NegativeInteger} | {PositiveInteger} | 0
 Fractional = ({Integer} | 0) "/" {Integer}
 Rational = ({Integer} "_" {Fractional}) | {Integer} | {Fractional}
 Float = {Integer} "." {Digit}+
-//Comments
-//Identifier
-//
-//Character
-//Boolean
-//Number
-//Integer
-//Rational
-//Float
-//Negative={-Number}
-
-
-// xiaofengvery cool
 
 
 
@@ -115,7 +104,6 @@ len {return symbol(sym.LEN);}
 
 //**Expression************
 "null"  {return symbol(sym.NULL);}
-"fdef"  {return symbol(sym.FDEF);}
 
 //**Statements************
 "read"  {return symbol(sym.READ);}
@@ -141,7 +129,7 @@ len {return symbol(sym.LEN);}
 //**Numeric***************
 "+" { return symbol(sym.PLUS); }
 "-" { return symbol(sym.MINUS); }
-"*" { return symbol(sym.MULTIPLE); }
+"*" { return symbol(sym.TIMES); }
 "/" { return symbol(sym.DIVIDE); }
 "^" { return symbol(sym.POWER); }
 

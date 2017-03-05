@@ -17,8 +17,21 @@ public void syntax_error(Symbol current_token) {
 
 // terminals
 terminal PLUS,MINUS,TIMES,DIVIDE,POWER,MOD,UMINUS;
-terminal SEMI,LPAREN,RPAREN;
-terminal SEQ,TOP,INT,CHAR,RAT,FLOAT,TDEF,FDEF;
+
+terminal COMMA,COLON,LBRACE,RBRACE,SEMICOLON,LPAREN,RPAREN,DOT,QUESTION;
+
+terminal DICT,SEQ,TOP,LEN,INT,CHAR,RAT,FLOAT,TDEF,FDEF,BOOL,ALIAS;
+
+terminal NULL;
+
+terminal NOT,AND,OR,IMPLICATION;
+
+terminal READ,PRINT,IF,THEN,ENDIF,LOOP,POOL,ELSE,BREAK,RETURN;
+
+terminal IN,CONCATENATION;
+
+terminal LEFT_SHARP,LEFT_SHARP_EQUAL,EQUAL,NOT_EQUAL,LEFT_SQUARE_BRACKET,RIGHT_SQUARE_BRACKET;
+
 //nonterminal
 
 non terminal decl,expr,stmt,program;
@@ -29,6 +42,9 @@ non terminal decl,expr,stmt,program;
 precedence left PLUS, MINUS;
 precedence left TIMES, DIVIDE, MOD;
 precedence left UMINUS;
+precedence left CONCAT, AND, OR;
+precedence right POW, IN;
+precedence nonassoc NOT, L_ANGLE, LESSEQ, EQEQ, NOTEQ, L_SQUARE;
 
 
 

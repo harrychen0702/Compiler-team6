@@ -6,26 +6,59 @@
 /** CUP generated class containing symbol constants. */
 public class sym {
   /* terminals */
-  public static final int TIMES = 4;
-  public static final int FDEF = 19;
-  public static final int MOD = 7;
-  public static final int TDEF = 18;
-  public static final int PLUS = 2;
-  public static final int RPAREN = 11;
-  public static final int INT = 14;
-  public static final int CHAR = 15;
-  public static final int SEMI = 9;
-  public static final int LPAREN = 10;
-  public static final int FLOAT = 17;
-  public static final int EOF = 0;
+  public static final int SEQ = 19;
   public static final int DIVIDE = 5;
-  public static final int TOP = 13;
-  public static final int SEQ = 12;
-  public static final int RAT = 16;
-  public static final int MINUS = 3;
-  public static final int error = 1;
   public static final int POWER = 6;
+  public static final int CHAR = 23;
+  public static final int POOL = 41;
   public static final int UMINUS = 8;
+  public static final int RIGHT_SQUARE_BRACKET = 52;
+  public static final int NOT_EQUAL = 50;
+  public static final int LPAREN = 14;
+  public static final int INT = 22;
+  public static final int MINUS = 3;
+  public static final int RPAREN = 15;
+  public static final int IMPLICATION = 34;
+  public static final int NOT = 31;
+  public static final int SEMICOLON = 13;
+  public static final int AND = 32;
+  public static final int IN = 45;
+  public static final int OR = 33;
+  public static final int TDEF = 26;
+  public static final int BOOL = 28;
+  public static final int COMMA = 9;
+  public static final int LEFT_SHARP_EQUAL = 48;
+  public static final int RAT = 24;
+  public static final int LOOP = 40;
+  public static final int PLUS = 2;
+  public static final int IF = 37;
+  public static final int DOT = 16;
+  public static final int EOF = 0;
+  public static final int RETURN = 44;
+  public static final int EQUAL = 49;
+  public static final int LEFT_SQUARE_BRACKET = 51;
+  public static final int error = 1;
+  public static final int NULL = 30;
+  public static final int MOD = 7;
+  public static final int LEFT_SHARP = 47;
+  public static final int BREAK = 43;
+  public static final int FDEF = 27;
+  public static final int TOP = 20;
+  public static final int TIMES = 4;
+  public static final int COLON = 10;
+  public static final int ENDIF = 39;
+  public static final int ELSE = 42;
+  public static final int DICT = 18;
+  public static final int LBRACE = 11;
+  public static final int READ = 35;
+  public static final int FLOAT = 25;
+  public static final int THEN = 38;
+  public static final int RBRACE = 12;
+  public static final int CONCATENATION = 46;
+  public static final int LEN = 21;
+  public static final int QUESTION = 17;
+  public static final int ALIAS = 29;
+  public static final int PRINT = 36;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
@@ -36,17 +69,50 @@ public class sym {
   "POWER",
   "MOD",
   "UMINUS",
-  "SEMI",
+  "COMMA",
+  "COLON",
+  "LBRACE",
+  "RBRACE",
+  "SEMICOLON",
   "LPAREN",
   "RPAREN",
+  "DOT",
+  "QUESTION",
+  "DICT",
   "SEQ",
   "TOP",
+  "LEN",
   "INT",
   "CHAR",
   "RAT",
   "FLOAT",
   "TDEF",
-  "FDEF"
+  "FDEF",
+  "BOOL",
+  "ALIAS",
+  "NULL",
+  "NOT",
+  "AND",
+  "OR",
+  "IMPLICATION",
+  "READ",
+  "PRINT",
+  "IF",
+  "THEN",
+  "ENDIF",
+  "LOOP",
+  "POOL",
+  "ELSE",
+  "BREAK",
+  "RETURN",
+  "IN",
+  "CONCATENATION",
+  "LEFT_SHARP",
+  "LEFT_SHARP_EQUAL",
+  "EQUAL",
+  "NOT_EQUAL",
+  "LEFT_SQUARE_BRACKET",
+  "RIGHT_SQUARE_BRACKET"
   };
 }
 
