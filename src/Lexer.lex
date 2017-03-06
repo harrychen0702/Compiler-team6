@@ -15,6 +15,21 @@ import java_cup.runtime.*;
 //使得与cup产生的处理器兼容
 %unicode
 
+%{
+StringBuffer strbuf = new StringBuffer(128);
+
+private int len() { return yylength(); }
+private String text() { return yytext(); }
+
+private Symbol symbol(short id) {
+    return new Symbol(id, yyline + 1, yycolumn + 1, len(), text());
+}
+
+private Symbol symbol(short id, String value) {
+    return new Symbol(id, yyline + 1, yycolumn + 1, len(), value);
+}
+%}
+
 
 %{
       StringBuffer string = new StringBuffer();
@@ -30,27 +45,29 @@ import java_cup.runtime.*;
 //***宏定义***************
 Letter = [a-zA-Z]
 Digit = [0-9]
-
-
-LineTerminator = \n | \r | \r\n
-InputCharacter = [^\r\n]
-
-Whitespace = [ ] | \t | \f | {LineTerminator}
-
-//Point 3
-Comment = {FirstComment} | {SecondComment}
-FirstComment = "#" {InputCharacter}* {LineTerminator}?
-SecondComment = "/#" [^#] ~ "#/" | "/#" "#" +"/" | "/#" "#" + [^/#] ~ "#/"
-
-//Point 4
+Whitespace = \r|\n|\r\n|" "|"\t"
 Identifier = {Letter} ({Letter} | _ | {Digit})*
-
-//Point 5
-Character = '[^' \r\n\'\\ ']'
-
-//Point 6
 Boolean = 'T' | 'F'
+Character="'"."'"
+LineTerminator=\r\n|\n|\r
+ValidChar=[^\r\n]
 
+
+Comment = {FirstComment} | {SecondComment}
+FirstComment = "#" {ValidChar}* {LineTerminator}?
+SecondComment = "/#" [^#]* "#/" | "/#" [#] +"/" 
+
+
+
+Positive_Integer = [1-9]{Digit}* 
+Negative_Integer = -{Positive_Integer}
+Integer = {Positive_Integer}|{Negative_Integer}|0
+Floats = {Integer}"."{Digit}+
+Fractional = ({Positive_Integer} | {Negative_Integer}) "/" ({Positive_Integer} | {Negative_Integer})
+Rational = {Fractional} | {Integer} | ({Positive_Integer} | {Negative_Integer}) "_" {Fractional}
+
+
+<<<<<<< HEAD
 //Point 7
 NonZeroDigit = [1-9]
 NegativeInteger = "-" (0*) {NonZeroDigit} {Digit}*
@@ -59,6 +76,8 @@ Integer = {NegativeInteger} | {PositiveInteger} | 0
 Fractional = {Integer} "/" ({PositiveInteger} | {NegativeInteger})
 Rational = ({Integer} "_" {Fractional}) | {Integer} | {Fractional}
 Float = {Integer} "." {Digit}+
+=======
+>>>>>>> origin/master
 
 
 
@@ -69,6 +88,7 @@ Float = {Integer} "." {Digit}+
 
 
 //**Keywords*************
+<<<<<<< HEAD
 "bool" {return symbol(sym.BOOL);}
 "int" {return symbol(sym.INT);}
 "rat" {return symbol(sym.RAT);}
@@ -78,6 +98,25 @@ Float = {Integer} "." {Digit}+
 "dict" {return symbol(sym.DICT);}
 "seq" {return symbol(sym.SEQ);}
 
+=======
+
+<<<<<<< Updated upstream
+dict {return symbol(sym.DICT);}
+seq {return symbol(sym.SEQ);}
+=======
+"main" { return symbol(sym.MAIN); }
+
+"bool" {return symbol(sym.BOOL);}
+"int" {return symbol(sym.INT);}
+"rat" {return symbol(sym.RAT);}
+"float" {return symbol(sym.FLOAT);}
+"char"    {return symbol(sym.CHAR);}
+
+"dict" {return symbol(sym.DICT);}
+"seq" {return symbol(sym.SEQ);};
+>>>>>>> Stashed changes
+
+>>>>>>> origin/master
 "top" {return symbol(sym.TOP);}
 "len" {return symbol(sym.LEN);}
 
@@ -146,6 +185,8 @@ Float = {Integer} "." {Digit}+
 //**Symbol****************
 "[" { return symbol(sym.LEFT_SQUARE_BRACKET); }
 "]" { return symbol(sym.RIGHT_SQUARE_BRACKET); }
+
+//宏定义
 
 
 
