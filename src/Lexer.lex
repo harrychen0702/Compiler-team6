@@ -71,8 +71,7 @@ Fractional = ({Positive_Integer} | {Negative_Integer}) "/" ({Positive_Integer} |
 Rational = {Fractional} | {Integer} | ({Positive_Integer} | {Negative_Integer}) "_" {Fractional}
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 //Point 7
 NonZeroDigit = [1-9]
 NegativeInteger = "-" (0*) {NonZeroDigit} {Digit}*
@@ -81,10 +80,6 @@ Integer = {NegativeInteger} | {PositiveInteger} | 0
 Fractional = {Integer} "/" ({PositiveInteger} | {NegativeInteger})
 Rational = ({Integer} "_" {Fractional}) | {Integer} | {Fractional}
 Float = {Integer} "." {Digit}+
-=======
->>>>>>> origin/master
-=======
->>>>>>> origin/master
 
 
 
@@ -95,8 +90,7 @@ Float = {Integer} "." {Digit}+
 
 
 //**Keywords*************
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 "bool" {return symbol(sym.BOOL);}
 "int" {return symbol(sym.INT);}
 "rat" {return symbol(sym.RAT);}
@@ -106,15 +100,6 @@ Float = {Integer} "." {Digit}+
 "dict" {return symbol(sym.DICT);}
 "seq" {return symbol(sym.SEQ);}
 
-=======
-
-=======
-
->>>>>>> origin/master
-<<<<<<< Updated upstream
-dict {return symbol(sym.DICT);}
-seq {return symbol(sym.SEQ);}
-=======
 "main" { return symbol(sym.MAIN); }
 
 "bool" {return symbol(sym.BOOL);}
@@ -125,12 +110,7 @@ seq {return symbol(sym.SEQ);}
 
 "dict" {return symbol(sym.DICT);}
 "seq" {return symbol(sym.SEQ);};
->>>>>>> Stashed changes
 
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> origin/master
 "top" {return symbol(sym.TOP);}
 "len" {return symbol(sym.LEN);}
 
@@ -200,11 +180,7 @@ seq {return symbol(sym.SEQ);}
 "[" { return symbol(sym.LEFT_SQUARE_BRACKET); }
 "]" { return symbol(sym.RIGHT_SQUARE_BRACKET); }
 
-<<<<<<< HEAD
-//宏定义
 
-
-=======
 //**宏定义*********************
 {Whitespace}        {}
 {Character}			{ return symbol(sym.CHAR_LITERAL); }
