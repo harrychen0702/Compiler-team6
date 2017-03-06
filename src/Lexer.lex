@@ -69,17 +69,17 @@ Float = {Integer} "." {Digit}+
 
 
 //**Keywords*************
-bool {return symbol(sym.BOOL);}
-int {return symbol(sym.INT);}
-rat {return symbol(sym.RAT);}
-float {return symbol(sym.FLOAT);}
-char    {return symbol(sym.CHAR);}
+"bool" {return symbol(sym.BOOL);}
+"int" {return symbol(sym.INT);}
+"rat" {return symbol(sym.RAT);}
+"float" {return symbol(sym.FLOAT);}
+"char"    {return symbol(sym.CHAR);}
 
-dict {return symbol(sym.DICT);}
-seq {return symbol(sym.SEQ);}
+"dict" {return symbol(sym.DICT);}
+"seq" {return symbol(sym.SEQ);}
 
-top {return symbol(sym.TOP);}
-len {return symbol(sym.LEN);}
+"top" {return symbol(sym.TOP);}
+"len" {return symbol(sym.LEN);}
 
 "," {return symbol(sym.COMMA);}
 ":" {return symbol(sym.COLON);}
