@@ -53,10 +53,10 @@ Boolean = 'T' | 'F'
 
 //Point 7
 NonZeroDigit = [1-9]
-NegativeInteger = "-" {NonZeroDigit} {Digit}*
+NegativeInteger = "-" (0*) {NonZeroDigit} {Digit}*
 PositiveInteger = (0*) {NonZeroDigit} {Digit}*
 Integer = {NegativeInteger} | {PositiveInteger} | 0
-Fractional = ({Integer} | 0) "/" {Integer}
+Fractional = {Integer} "/" ({PositiveInteger} | {NegativeInteger})
 Rational = ({Integer} "_" {Fractional}) | {Integer} | {Fractional}
 Float = {Integer} "." {Digit}+
 
