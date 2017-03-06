@@ -15,20 +15,7 @@ import java_cup.runtime.*;
 //使得与cup产生的处理器兼容
 %unicode
 
-%{
-StringBuffer strbuf = new StringBuffer(128);
 
-private int len() { return yylength(); }
-private String text() { return yytext(); }
-
-private Symbol symbol(short id) {
-    return new Symbol(id, yyline + 1, yycolumn + 1, len(), text());
-}
-
-private Symbol symbol(short id, String value) {
-    return new Symbol(id, yyline + 1, yycolumn + 1, len(), value);
-}
-%}
 
 
 %{
@@ -63,7 +50,7 @@ SecondComment = "/#" [^#]* "#/" | "/#" [#] +"/"
 Positive_Integer = [1-9]{Digit}* 
 Negative_Integer = -{Positive_Integer}
 Integer = {Positive_Integer}|{Negative_Integer}|0
-Floats = {Integer}"."{Digit}+
+Float = {Integer}"."{Digit}+
 Fractional = ({Positive_Integer} | {Negative_Integer}) "/" ({Positive_Integer} | {Negative_Integer})
 Rational = {Fractional} | {Integer} | ({Positive_Integer} | {Negative_Integer}) "_" {Fractional}
 
@@ -79,10 +66,7 @@ Rational = {Fractional} | {Integer} | ({Positive_Integer} | {Negative_Integer}) 
 
 //**Keywords*************
 
-<<<<<<< Updated upstream
-dict {return symbol(sym.DICT);}
-seq {return symbol(sym.SEQ);}
-=======
+
 "main" { return symbol(sym.MAIN); }
 
 "bool" {return symbol(sym.BOOL);}
@@ -92,8 +76,8 @@ seq {return symbol(sym.SEQ);}
 "char"    {return symbol(sym.CHAR);}
 
 "dict" {return symbol(sym.DICT);}
-"seq" {return symbol(sym.SEQ);};
->>>>>>> Stashed changes
+"seq" {return symbol(sym.SEQ);}
+
 
 "top" {return symbol(sym.TOP);}
 "len" {return symbol(sym.LEN);}
