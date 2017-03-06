@@ -15,20 +15,6 @@ import java_cup.runtime.*;
 //使得与cup产生的处理器兼容
 %unicode
 
-%{
-StringBuffer strbuf = new StringBuffer(128);
-
-private int len() { return yylength(); }
-private String text() { return yytext(); }
-
-private Symbol symbol(short id) {
-    return new Symbol(id, yyline + 1, yycolumn + 1, len(), text());
-}
-
-private Symbol symbol(short id, String value) {
-    return new Symbol(id, yyline + 1, yycolumn + 1, len(), value);
-}
-%}
 
 
 %{
@@ -49,10 +35,9 @@ Whitespace = \r|\n|\r\n|" "|"\t"
 Identifier = {Letter} ({Letter} | _ | {Digit})*
 Boolean = 'T' | 'F'
 Character="'"."'"
-<<<<<<< HEAD
-=======
+
 String = "\""  ~ "\""
->>>>>>> origin/master
+
 LineTerminator=\r\n|\n|\r
 ValidChar=[^\r\n]
 
@@ -66,20 +51,13 @@ SecondComment = "/#" [^#]* "#/" | "/#" [#] +"/"
 Positive_Integer = [1-9]{Digit}* 
 Negative_Integer = -{Positive_Integer}
 Integer = {Positive_Integer}|{Negative_Integer}|0
-Floats = {Integer}"."{Digit}+
+Float = {Integer}"."{Digit}+
 Fractional = ({Positive_Integer} | {Negative_Integer}) "/" ({Positive_Integer} | {Negative_Integer})
 Rational = {Fractional} | {Integer} | ({Positive_Integer} | {Negative_Integer}) "_" {Fractional}
 
 
 
-//Point 7
-NonZeroDigit = [1-9]
-NegativeInteger = "-" (0*) {NonZeroDigit} {Digit}*
-PositiveInteger = (0*) {NonZeroDigit} {Digit}*
-Integer = {NegativeInteger} | {PositiveInteger} | 0
-Fractional = {Integer} "/" ({PositiveInteger} | {NegativeInteger})
-Rational = ({Integer} "_" {Fractional}) | {Integer} | {Fractional}
-Float = {Integer} "." {Digit}+
+
 
 
 
@@ -100,7 +78,7 @@ Float = {Integer} "." {Digit}+
 "dict" {return symbol(sym.DICT);}
 "seq" {return symbol(sym.SEQ);}
 
-"main" { return symbol(sym.MAIN); }
+"main" {return symbol(sym.MAIN);}
 
 "bool" {return symbol(sym.BOOL);}
 "int" {return symbol(sym.INT);}
@@ -109,7 +87,7 @@ Float = {Integer} "." {Digit}+
 "char"    {return symbol(sym.CHAR);}
 
 "dict" {return symbol(sym.DICT);}
-"seq" {return symbol(sym.SEQ);};
+"seq" {return symbol(sym.SEQ);}
 
 "top" {return symbol(sym.TOP);}
 "len" {return symbol(sym.LEN);}
@@ -181,7 +159,7 @@ Float = {Integer} "." {Digit}+
 "]" { return symbol(sym.RIGHT_SQUARE_BRACKET); }
 
 
-//**宏定义*********************
+//**宏定义*********************//
 {Whitespace}        {}
 {Character}			{ return symbol(sym.CHAR_LITERAL); }
 {Float} 			{ return symbol(sym.FLOAT_LITERAL); }
@@ -190,7 +168,7 @@ Float = {Integer} "." {Digit}+
 {String}			{ return symbol(sym.STRING_LITERAL); }
 {Boolean}			{ return symbol(sym.BOOL_LITERAL); }
 {Identifier}		{ return symbol(sym.IDENTIFIER); }
->>>>>>> origin/master
+
 
 }
 

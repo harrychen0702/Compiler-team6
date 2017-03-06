@@ -1,0 +1,6 @@
+FOR CYGWIN
+export PATH=$PATH:"/cygdrive/C/Program Files/Java/jdk1.8.0_121/bin/"
+
+FOR TESTING
+chmod +x tim-test.sh	
+ ./tim-test.sh dir ./tests/open/
