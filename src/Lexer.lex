@@ -49,6 +49,7 @@ Whitespace = \r|\n|\r\n|" "|"\t"
 Identifier = {Letter} ({Letter} | _ | {Digit})*
 Boolean = 'T' | 'F'
 Character="'"."'"
+String = "\""  ~ "\""
 LineTerminator=\r\n|\n|\r
 ValidChar=[^\r\n]
 
@@ -163,10 +164,39 @@ seq {return symbol(sym.SEQ);}
 "[" { return symbol(sym.LEFT_SQUARE_BRACKET); }
 "]" { return symbol(sym.RIGHT_SQUARE_BRACKET); }
 
-//宏定义
-
-
+//**宏定义*********************
+{Whitespace}        {}
+{Character}			{ return symbol(sym.CHAR_LITERAL); }
+{Float} 			{ return symbol(sym.FLOAT_LITERAL); }
+{Integer}			{ return symbol(sym.INT_LITERAL); }
+{Rational}			{ return symbol(sym.RAT_LITERAL); }
+{String}			{ return symbol(sym.STRING_LITERAL); }
+{Boolean}			{ return symbol(sym.BOOL_LITERAL); }
+{Identifier}		{ return symbol(sym.IDENTIFIER); }
 
 }
 
 [^]         { throw new Error("Line " + yyline+1 + ", Column " + yycolumn); }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
