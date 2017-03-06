@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e69e029e-b167-428e-9747-45086e87db88" name="Default" comment="testing vcs function on intellij">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Lexer.java" afterPath="$PROJECT_DIR$/Lexer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Lexer.lex" afterPath="$PROJECT_DIR$/Lexer.lex" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../test.temp" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,8 +20,8 @@
       <file leaf-file-name="Lexer.lex" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Lexer.lex">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
-              <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+            <state relative-caret-position="222">
+              <caret line="72" column="33" lean-forward="true" selection-start-line="72" selection-start-column="33" selection-end-line="72" selection-end-column="33" />
               <folding>
                 <marker date="1488822358027" expanded="false" signature="274:285" ph=" { " />
                 <marker date="1488822358027" expanded="false" signature="327:335" ph=" }" />
@@ -498,7 +497,7 @@
       <workItem from="1488677450709" duration="2007000" />
       <workItem from="1488679504510" duration="6501000" />
       <workItem from="1488747680351" duration="2036000" />
-      <workItem from="1488820471764" duration="1840000" />
+      <workItem from="1488820471764" duration="1862000" />
     </task>
     <task id="LOCAL-00001" summary="testing vcs function on intellij">
       <created>1488677887797</created>
@@ -511,7 +510,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12384000" />
+    <option name="totallyTimeSpent" value="12406000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1439,8 +1438,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Lexer.lex">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+        <state relative-caret-position="222">
+          <caret line="72" column="33" lean-forward="true" selection-start-line="72" selection-start-column="33" selection-end-line="72" selection-end-column="33" />
           <folding>
             <marker date="1488822358027" expanded="false" signature="274:285" ph=" { " />
             <marker date="1488822358027" expanded="false" signature="327:335" ph=" }" />
