@@ -16,6 +16,9 @@ public void syntax_error(Symbol current_token) {
 //终结符声明的语法是：terminal classname name1; classname 是对象的类型，如 整数(Integer)
 
 // terminals
+
+terminal MAIN,CHAR_LITERAL,FLOAT_LITERAL,INT_LITERAL,RAT_LITERAL,STRING_LITERAL,BOOL_LITERAL,IDENTIFIER;
+
 terminal PLUS,MINUS,TIMES,DIVIDE,POWER,MOD,UMINUS;
 
 terminal COMMA,COLON,LBRACE,RBRACE,SEMICOLON,LPAREN,RPAREN,DOT,QUESTION;
