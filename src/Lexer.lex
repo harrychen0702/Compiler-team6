@@ -69,7 +69,7 @@ Rational = {Fractional} | {Integer} | ({Positive_Integer} | {Negative_Integer}) 
 
 //**Keywords*************
 
-
+// try
 "main" {return symbol(sym.MAIN);}
 
 "bool" {return symbol(sym.BOOL);}
