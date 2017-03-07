@@ -54,6 +54,7 @@ Integer = {Positive_Integer}|{Negative_Integer}|0
 Float = {Integer}"."{Digit}+
 Fractional = ({Positive_Integer} | {Negative_Integer}) "/" ({Positive_Integer} | {Negative_Integer})
 Rational = {Fractional} | {Integer} | ({Positive_Integer} | {Negative_Integer}) "_" {Fractional}
+Number = {Rational} | {Float}
 
 
 
@@ -119,6 +120,7 @@ Rational = {Fractional} | {Integer} | ({Positive_Integer} | {Negative_Integer}) 
 "else"  {return symbol(sym.ELSE);}
 "break" {return symbol(sym.BREAK);}
 "return"    {return symbol(sym.RETURN);}
+":="  {reuturn symbol(sym.ASSIGN);}
 
 
 
@@ -161,6 +163,7 @@ Rational = {Fractional} | {Integer} | ({Positive_Integer} | {Negative_Integer}) 
 {String}			{ return symbol(sym.STRING_LITERAL); }
 {Boolean}			{ return symbol(sym.BOOL_LITERAL); }
 {Identifier}		{ return symbol(sym.IDENTIFIER); }
+{Number}            { return symbol(sym.NUMBER; }
 
 
 }
