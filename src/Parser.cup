@@ -113,7 +113,10 @@ other_variable_list ::= other_variable
                       | ;
 other_variable ::= IDENTIFIER
                  | NUMBER
-                 | QUESTION boolean QUESTION IDENTIFIER LPAREN other_variable_list RPAREN;
+                 | QUESTION TRUE QUESTION IDENTIFIER LPAREN other_variable_list RPAREN
+                 | QUESTION FALSE QUESTION IDENTIFIER LPAREN other_variable_list RPAREN
+                 {:RESULT= NULL;:};
+
 
 
 

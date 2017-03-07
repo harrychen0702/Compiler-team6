@@ -34,15 +34,7 @@ Our solution: This is possible in many other languages when the combined sequenc
 
 Paragraph: 13
 Problem: It is not clear that what is the type of parameters in the “alias”. The spec gives two examples: “alias old_name new_name” and “alias seq<char> string”, and it is not clear about the type of these parameters.
-Our solution: **********************************
-
-Paragraph: 15
-Problem: The use of foo() is undefined.
-Our solution: *******************************
-
-Paragraph: 17
-Problem: The spec gives a example: “g: int := ?pred?foo();”. If the red evaluates to F, g will be assigned null.
-Our solution:***********************************
+Our solution: We think it is a mistake and we set the first parameter to be a data type (both basic data type and aggregate data type) and the second parameter to be an identifier.
 
 Paragraph: 18
 Problem: It is not clear about the path declaration of the standard input.
