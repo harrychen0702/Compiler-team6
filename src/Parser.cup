@@ -82,10 +82,10 @@ data_type ::= basic_data_type
             | aggregate_data_type;
 
 declaration_list ::= IDENTIFIER COLON data_type
-                   | IDENTIFIER COLON data_type COMMA delaration_list
+                   | IDENTIFIER COLON data_type COMMA delaration_list;
                    
 
-Declaration ::= TDEF IDENTIFIER LBRACE declaration_list RBRACE SEMICOLON;
+declaration ::= TDEF IDENTIFIER LBRACE declaration_list RBRACE SEMICOLON
               | ALIAS data_type IDENTIFIER SEMICOLON;
 
 
