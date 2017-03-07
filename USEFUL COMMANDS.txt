@@ -6,3 +6,4 @@ chmod +x tim-test.sh
  ./tim-test.sh dir ./tests/open/
  git remote add ucl wentawei@gitlab.cs.ucl.ac.uk:/cs/student/comp207p/comp207p_06
  git push ucl master
+git push ucl origin/archie
