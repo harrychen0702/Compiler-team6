@@ -31,7 +31,7 @@ import java_cup.runtime.*;
 //***宏定义***************
 Letter = [a-zA-Z]
 Digit = [0-9]
-Whitespace = "\t"|\r|\n|\r\n|" "
+Whitespace = \r|\n|\r\n|" "|"\t"
 Identifier = {Letter} ({Letter} | _ | {Digit})*
 Boolean = 'T' | 'F'
 Character="'"."'"
@@ -49,6 +49,7 @@ SecondComment = "/#" [^#]* "#/" | "/#" [#] +"/"
 
 
 Positive_Integer = [1-9]{Digit}* 
+Positive_Integer = [1-9]{Digit}*
 Negative_Integer = -{Positive_Integer}
 Integer = {Positive_Integer}|{Negative_Integer}|0
 Float = {Integer}"."{Digit}+
@@ -118,7 +119,7 @@ Rational = {Fractional} | {Integer} | ({Positive_Integer} | {Negative_Integer}) 
 "pool"  {return symbol(sym.POOL);}
 "else"  {return symbol(sym.ELSE);}
 "break" {return symbol(sym.BREAK);}
-"return"    {return symbol(sym.RETURN);}
+"return" {return symbol(sym.RETURN);}
 
 
 

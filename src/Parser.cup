@@ -62,13 +62,14 @@ precedence right POWER, IN;
 
 //********Productions*****************
 start with program;
-program ::= main_function;
+program ::= MAIN LBRACE RETURN SEMICOLON RBRACE SEMICOLON;
 //          | other_functions main_function
 //          | main_function other_functions
 //          | other_functions main_function other_functions;
 
-main_function ::=MAIN LBRACE stmts RBRACE SEMICOLON;
+main_function ::=MAIN LBRACE RETURN SEMICOLON RBRACE SEMICOLON;
 stmts ::=stmt;
+
 stmt::=RETURN SEMICOLON;
 
 other_functions::= function function|function;
