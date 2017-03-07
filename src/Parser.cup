@@ -67,7 +67,6 @@ program ::= main_function
           | other_functions main_function other_functions;
 
 
-
 basic_data_type ::= BOOL
                   | INT
                   | RAT
