@@ -38,9 +38,11 @@ terminal LEFT_SHARP,LEFT_SHARP_EQUAL,EQUAL,NOT_EQUAL,LEFT_SQUARE_BRACKET,RIGHT_S
 //************Nonterminal***************
 non terminal program, main_function, other_functions;
 
-non terminal declaration,expr,stmt,program;
+non terminal variable_declaration,function_declaration,expr,stmt;
 
-non terminal declaration_list;
+non terminal declaration_list,basic_data_type,aggregate_data_type,data_type;
+
+non terminal body;
 
 // Eliminating Ambiguity   终结符的优先级和结合性 (消除二义性)
 //Precedences
@@ -53,9 +55,6 @@ precedence right POWER, IN;
 
 
 
-//CFG 文法
-
-//在文法中的每一个产生式有一个非终结符在左边，然后是 ::=，其后是零个或多个动作，终结符，非终结符等，再后面是一个分号
 
 
 
@@ -82,11 +81,20 @@ data_type ::= basic_data_type
             | aggregate_data_type;
 
 declaration_list ::= IDENTIFIER COLON data_type
-                   | IDENTIFIER COLON data_type COMMA delaration_list;
+                   | IDENTIFIER COLON data_type COMMA declaration_list;
                    
 
-declaration ::= TDEF IDENTIFIER LBRACE declaration_list RBRACE SEMICOLON
+variable_declaration ::= TDEF IDENTIFIER LBRACE declaration_list RBRACE SEMICOLON
               | ALIAS data_type IDENTIFIER SEMICOLON;
+
+function_declaration ::= FDEF IDENTIFIER LPAREN declaration_list RPAREN LBRACE body RBRACE COLON data_type SEMICOLON
+                       | FDEF IDENTIFIER LPAREN declaration_list RPAREN LBRACE body RBRACE SEMICOLON;
+
+body ::= 
+//************Expression*******************
+
+
+
 
 
 
