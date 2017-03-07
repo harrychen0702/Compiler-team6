@@ -1,5 +1,56 @@
+//*This document is used to show and explain ambiguities that present in the specification.*/
+
+Paragraph: 3
+Problem: It is not clear whether we can write “#/“ as a comment, like “/# #/ #/”.
+Our solution: This is not possible in many other languages, so our compiler does not accept this syntax.
+
+Paragraph: 8
+Problem: The spec has a assignment that used “{1:T}” as a pair in the dictionary: “dict<int, top> := {1:1, … , {1:T}}”. 
+Our solution: In the case of {1:T}, we think it is a mistake and our compiler does not accept this syntax.
+
+Paragraph: 9
+Problem: The spec has a assignment that written as: “s:seq<top> s := […];”. It is not clear that what is the purpose of the second “s”.
+Our solution: We think it is a mistake and our compiler does not accept this syntax.
+
+Paragraph: 10
+Problem: The spec has not give us a definition of “String”, so our compiler cannot recognize   “seq<char> := “hello world””.
+Our solution: We think it is a mistake, so we declare “String“ in the lexer.
+
+Paragraph: 11
+Problem: It is not clear whether we can write “[:]” as sequence slicing.
+Our solution: This is possible in many other languages like python, so our compiler accept this syntax.
+
+Paragraph: 11
+Problem: It is not clear whether we can write s[-3] when s is a sequence that shorter than 3.
+Our solution: This is not possible in many other languages, so our compiler does not accept this syntax.
+
+Paragraph: 12
+Problem: It is not clear whether we can connect two sequences that have different type.
+Our solution: ****************************
+
+Paragraph: 13
+Problem: It is not clear that what is the type of parameters in the “alias”. The spec gives two examples: “alias old_name new_name” and “alias seq<char> string”, and it is not clear about the type of these parameters.
+Our solution: **********************************
+
+Paragraph: 15
+Problem: The use of foo() is undefined.
+Our solution: *******************************
+
+Paragraph: 17
+Problem: The spec gives a example: “g: int := ?pred?foo();”. If the red evaluates to F, g will be assigned null.
+Our solution:***********************************
+
+Paragraph: 18
+Problem: It is not clear about the path declaration of the standard input.
+Our solution:**********************************
+
+Paragraph: 18
+Problem: Calling a function whose predicate evaluates to F equals NOP.
+
+Paragraph: 20
 
 
 
 
-Paragraph: 72Problem: it is not clear whether we can omit both the start and end indices         in sequence slicing, like "foo = bar[:]".Our solution: this is possible in many other languages that support list              slicing (like Python), so our compiler accepts this syntax.Paragraph: 99Problem: the spec has an assignment using the equality operator,        "foo == bar;".Our solution: we think this is a mistake, and our compiler does not accept            this statement.
+
+
