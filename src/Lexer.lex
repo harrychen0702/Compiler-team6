@@ -147,6 +147,7 @@ Rational = {Fractional} | {Integer} | ({Positive_Integer} | {Negative_Integer}) 
 //**Dict operator
 "in" { return symbol(sym.IN); }
 "::" { return symbol(sym.CONCATENATION); }
+">"  { return symbol(sym.RIGHT_SHARP);}
 
 //**Comparison
 "<" { return symbol(sym.LEFT_SHARP); }
