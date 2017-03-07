@@ -14,8 +14,8 @@ public class sym {
   public static final int CHAR_LITERAL = 3;
   public static final int POOL = 49;
   public static final int UMINUS = 16;
-  public static final int RIGHT_SQUARE_BRACKET = 60;
-  public static final int NOT_EQUAL = 58;
+  public static final int RIGHT_SQUARE_BRACKET = 61;
+  public static final int NOT_EQUAL = 59;
   public static final int LPAREN = 22;
   public static final int INT = 30;
   public static final int RAT_LITERAL = 6;
@@ -30,7 +30,7 @@ public class sym {
   public static final int TDEF = 34;
   public static final int BOOL = 36;
   public static final int COMMA = 17;
-  public static final int LEFT_SHARP_EQUAL = 56;
+  public static final int LEFT_SHARP_EQUAL = 57;
   public static final int RAT = 32;
   public static final int LOOP = 48;
   public static final int PLUS = 10;
@@ -39,12 +39,12 @@ public class sym {
   public static final int DOT = 24;
   public static final int EOF = 0;
   public static final int RETURN = 52;
-  public static final int EQUAL = 57;
-  public static final int LEFT_SQUARE_BRACKET = 59;
+  public static final int EQUAL = 58;
+  public static final int LEFT_SQUARE_BRACKET = 60;
   public static final int error = 1;
   public static final int NULL = 38;
   public static final int MOD = 15;
-  public static final int LEFT_SHARP = 55;
+  public static final int LEFT_SHARP = 56;
   public static final int BREAK = 51;
   public static final int FDEF = 35;
   public static final int TOP = 28;
@@ -56,6 +56,7 @@ public class sym {
   public static final int LBRACE = 19;
   public static final int READ = 43;
   public static final int FLOAT = 33;
+  public static final int RIGHT_SHARP = 55;
   public static final int THEN = 46;
   public static final int RBRACE = 20;
   public static final int CONCATENATION = 54;
@@ -123,6 +124,7 @@ public class sym {
   "RETURN",
   "IN",
   "CONCATENATION",
+  "RIGHT_SHARP",
   "LEFT_SHARP",
   "LEFT_SHARP_EQUAL",
   "EQUAL",
