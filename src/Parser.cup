@@ -31,14 +31,16 @@ terminal NOT,AND,OR,IMPLICATION;
 
 terminal READ,PRINT,IF,THEN,ENDIF,LOOP,POOL,ELSE,BREAK,RETURN;
 
-terminal IN,CONCATENATION;
+terminal IN,CONCATENATION,RIGHT_SHARP;
 
 terminal LEFT_SHARP,LEFT_SHARP_EQUAL,EQUAL,NOT_EQUAL,LEFT_SQUARE_BRACKET,RIGHT_SQUARE_BRACKET;
 
-//nonterminal
+//************Nonterminal***************
+non terminal program, main_function, other_functions;
 
 non terminal decl,expr,stmt,program;
-//把所有lexer中返回的词类字符标成terminal
+
+non terminal declaration_list
 
 // Eliminating Ambiguity   终结符的优先级和结合性 (消除二义性)
 //Precedences
@@ -55,10 +57,63 @@ precedence right POWER, IN;
 
 //在文法中的每一个产生式有一个非终结符在左边，然后是 ::=，其后是零个或多个动作，终结符，非终结符等，再后面是一个分号
 
-//production
+
+
+//********Productions*****************
+program ::= main_function
+          | other_functions main_function
+          | main_function other_functions
+          | other_functions main_function other_functions;
+
+
+
+basic_data_type ::= BOOL
+                  | INT
+                  | RAT
+                  | FLOAT
+                  | CHAR
+                  | SEQ LEFT_SHARP basic_data_type RIGHT_SHARP
+                  | TOP;
+                  
+aggregate_data_type ::= DICT LEFT_SHARP basic_data_type COMMA basic_data_type RIGHT_SHARP
+                      | SEQ LEFT_SHARP basic_data_type RIGHT_SHARP;
+
+data_type ::= basic_data_type
+            | aggregate_data_type;
+
+declaration_list ::= IDENTIFIER COLON data_type
+                   | IDENTIFIER COLON data_type COMMA delaration_list
+                   
+
+Declaration ::= TDEF IDENTIFIER LBRACE declaration_list RBRACE SEMICOLON;
+              | ALIAS data_type IDENTIFIER SEMICOLON;
+
+
+
+
+
 
 //seq.len
 //returntype
 //function name
 start with program;
 program ::=PLUS;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
