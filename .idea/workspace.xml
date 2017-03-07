@@ -2,15 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ab49645-023f-489e-8272-62cc9ae7a2a3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Lexer.class" afterPath="$PROJECT_DIR$/bin/Lexer.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Parser$CUP$Parser$actions.class" afterPath="$PROJECT_DIR$/bin/Parser$CUP$Parser$actions.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Parser.class" afterPath="$PROJECT_DIR$/bin/Parser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/sym.class" afterPath="$PROJECT_DIR$/bin/sym.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Lexer.java" afterPath="$PROJECT_DIR$/src/Lexer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Lexer.lex" afterPath="$PROJECT_DIR$/src/Lexer.lex" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Parser.cup" afterPath="$PROJECT_DIR$/src/Parser.cup" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Parser.java" afterPath="$PROJECT_DIR$/src/Parser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sym.java" afterPath="$PROJECT_DIR$/src/sym.java" />
     </list>
     <ignored path="Compiler-team6.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,25 +27,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Parser.cup" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Parser.cup" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Parser.cup">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="466">
-              <caret line="92" column="9" lean-forward="true" selection-start-line="92" selection-start-column="9" selection-end-line="92" selection-end-column="9" />
+            <state relative-caret-position="1635">
+              <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
               <folding>
-                <marker date="1488914677000" expanded="true" signature="61:102" ph="{...}" />
-                <marker date="1488914677000" expanded="true" signature="61:147" ph="{...}" />
-                <marker date="1488914677000" expanded="true" signature="194:350" ph="{...}" />
+                <marker date="1488925289000" expanded="true" signature="61:102" ph="{...}" />
+                <marker date="1488925289000" expanded="true" signature="61:147" ph="{...}" />
+                <marker date="1488925289000" expanded="true" signature="194:350" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Lexer.lex" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Lexer.lex" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Lexer.lex">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="88" column="29" lean-forward="true" selection-start-line="88" selection-start-column="23" selection-end-line="88" selection-end-column="29" />
+            <state relative-caret-position="481">
+              <caret line="168" column="1" lean-forward="true" selection-start-line="168" selection-start-column="1" selection-end-line="168" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -67,6 +64,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/src/Lexer.lex" />
         <option value="$PROJECT_DIR$/src/Parser.cup" />
       </list>
     </option>
@@ -131,6 +129,7 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="add_unversioned_files" value="true" />
     <property name="FullScreen" value="true" />
+    <property name="SearchEverywhereHistoryKey" value=".&#9;FILE&#9;file:///Users/harrychen/Desktop/Compiler-team6/src/Parser.cup" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -138,6 +137,34 @@
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
       <method />
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
@@ -261,6 +288,18 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -362,7 +401,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -400,9 +439,9 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1488914677000" expanded="true" signature="61:102" ph="{...}" />
-            <marker date="1488914677000" expanded="true" signature="61:147" ph="{...}" />
-            <marker date="1488914677000" expanded="true" signature="194:350" ph="{...}" />
+            <marker date="1488925289000" expanded="true" signature="61:102" ph="{...}" />
+            <marker date="1488925289000" expanded="true" signature="61:147" ph="{...}" />
+            <marker date="1488925289000" expanded="true" signature="194:350" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -420,9 +459,9 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1488914677000" expanded="true" signature="61:102" ph="{...}" />
-            <marker date="1488914677000" expanded="true" signature="61:147" ph="{...}" />
-            <marker date="1488914677000" expanded="true" signature="194:350" ph="{...}" />
+            <marker date="1488925289000" expanded="true" signature="61:102" ph="{...}" />
+            <marker date="1488925289000" expanded="true" signature="61:147" ph="{...}" />
+            <marker date="1488925289000" expanded="true" signature="194:350" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -440,9 +479,9 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1488914677000" expanded="true" signature="61:102" ph="{...}" />
-            <marker date="1488914677000" expanded="true" signature="61:147" ph="{...}" />
-            <marker date="1488914677000" expanded="true" signature="194:350" ph="{...}" />
+            <marker date="1488925289000" expanded="true" signature="61:102" ph="{...}" />
+            <marker date="1488925289000" expanded="true" signature="61:147" ph="{...}" />
+            <marker date="1488925289000" expanded="true" signature="194:350" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -477,23 +516,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Lexer.lex">
+    <entry file="file://$PROJECT_DIR$/src/Parser.cup">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="88" column="29" lean-forward="true" selection-start-line="88" selection-start-column="23" selection-end-line="88" selection-end-column="29" />
-          <folding />
+        <state relative-caret-position="1635">
+          <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+          <folding>
+            <marker date="1488925289000" expanded="true" signature="61:102" ph="{...}" />
+            <marker date="1488925289000" expanded="true" signature="61:147" ph="{...}" />
+            <marker date="1488925289000" expanded="true" signature="194:350" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Parser.cup">
+    <entry file="file://$PROJECT_DIR$/src/Lexer.lex">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="92" column="9" lean-forward="true" selection-start-line="92" selection-start-column="9" selection-end-line="92" selection-end-column="9" />
-          <folding>
-            <marker date="1488914677000" expanded="true" signature="61:102" ph="{...}" />
-            <marker date="1488914677000" expanded="true" signature="61:147" ph="{...}" />
-            <marker date="1488914677000" expanded="true" signature="194:350" ph="{...}" />
-          </folding>
+        <state relative-caret-position="481">
+          <caret line="168" column="1" lean-forward="true" selection-start-line="168" selection-start-column="1" selection-end-line="168" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>

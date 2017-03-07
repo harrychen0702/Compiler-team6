@@ -23,11 +23,11 @@ terminal PLUS,MINUS,TIMES,DIVIDE,POWER,MOD,UMINUS;
 
 terminal COMMA,COLON,LBRACE,RBRACE,SEMICOLON,LPAREN,RPAREN,DOT,QUESTION;
 
-terminal DICT,SEQ,TOP,LEN,INT,CHAR,RAT,FLOAT,TDEF,FDEF,BOOL,ALIAS;
+terminal DICT,SEQ,TOP,LEN,INT,CHAR,RAT,FLOAT,TDEF,FDEF,BOOL,ALIAS,NUMBER;
 
 terminal NULL;
 
-terminal NOT,AND,OR,IMPLICATION;
+terminal NOT,AND,OR,IMPLICATION,ASSIGN;
 
 terminal READ,PRINT,IF,THEN,ENDIF,LOOP,POOL,ELSE,BREAK,RETURN;
 
@@ -64,7 +64,7 @@ program ::= main_function
           | other_functions main_function
           | main_function other_functions
           | other_functions main_function other_functions;
-
+//program ::=MAIN LBRACE RETURN SEMICOLON RBRACE SEMICOLON;
 
 basic_data_type ::= BOOL
                   | INT
@@ -90,8 +90,31 @@ variable_declaration ::= TDEF IDENTIFIER LBRACE declaration_list RBRACE SEMICOLO
 function_declaration ::= FDEF IDENTIFIER LPAREN declaration_list RPAREN LBRACE body RBRACE COLON data_type SEMICOLON
                        | FDEF IDENTIFIER LPAREN declaration_list RPAREN LBRACE body RBRACE SEMICOLON;
 
-body ::= 
+body ::=;
+
 //************Expression*******************
+operator ::= PLUS
+           | MINUS
+           | TIMES
+           | DIVIDE
+           | POWER
+           | IN
+           | CONCATENATION
+           | ASSIGN
+           | DOT;
+
+statement ::= other_variable operator other_variable
+            | statement operator statement;
+
+boolean ::= TRUE | FALSE;
+
+other_variable_list ::= other_variable
+                      | other_variable COMMA other_variable
+                      | ;
+other_variable ::= IDENTIFIER
+                 | NUMBER
+                 | QUESTION boolean QUESTION IDENTIFIER LPAREN other_variable_list RPAREN;
+
 
 
 
