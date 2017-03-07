@@ -31,7 +31,7 @@ import java_cup.runtime.*;
 //***宏定义***************
 Letter = [a-zA-Z]
 Digit = [0-9]
-Whitespace = \r|\n|\r\n|" "|"\t"
+Whitespace = "\t"|\r|\n|\r\n|" "
 Identifier = {Letter} ({Letter} | _ | {Digit})*
 Boolean = 'T' | 'F'
 Character="'"."'"

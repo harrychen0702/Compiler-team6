@@ -3,13 +3,13 @@ import java_cup.runtime.*;//预先声明
 parser code
 {:
   //java code, 这个处理器代码将被直接放在产生的处理器的类定义中
-public boolean syntaxErrors;
-public void syntax_error(Symbol current_token) {  
+    public boolean syntaxErrors = false;
+    public void syntax_error(Symbol current_token) {
+    syntaxErrors = true;
     report_error(
-        "Syntax error at line " + (current_token.left+1) + ", column "
-+ current_token.right, null
+        "Syntax error at line " + (current_token.left+1) + ", column " + current_token.right, null
     );
-}
+    }
 :}
 
 //terminals and nonterminal 终结符和非终结符的说明
@@ -31,15 +31,18 @@ terminal NOT,AND,OR,IMPLICATION;
 
 terminal READ,PRINT,IF,THEN,ENDIF,LOOP,POOL,ELSE,BREAK,RETURN;
 
-terminal IN,CONCATENATION;
+terminal IN,CONCATENATION,RIGHT_SHARP;
 
 terminal LEFT_SHARP,LEFT_SHARP_EQUAL,EQUAL,NOT_EQUAL,LEFT_SQUARE_BRACKET,RIGHT_SQUARE_BRACKET;
 
-//nonterminal
+//************Nonterminal***************
+non terminal program, main_function, other_functions,function;
 
-non terminal decl,expr,stmt,program;
-//把所有lexer中返回的词类字符标成terminal
+non terminal declaration,expr,stmt,stmts;
 
+non terminal declaration_list;
+
+non terminal basic_data_type,data_type,aggregate_data_type;
 // Eliminating Ambiguity   终结符的优先级和结合性 (消除二义性)
 //Precedences
 precedence left PLUS, MINUS;
@@ -55,10 +58,65 @@ precedence right POWER, IN;
 
 //在文法中的每一个产生式有一个非终结符在左边，然后是 ::=，其后是零个或多个动作，终结符，非终结符等，再后面是一个分号
 
-//production
+
+
+//********Productions*****************
+start with program;
+program ::= main_function;
+//          | other_functions main_function
+//          | main_function other_functions
+//          | other_functions main_function other_functions;
+
+main_function ::=MAIN LBRACE stmts RBRACE SEMICOLON;
+stmts ::=stmt;
+stmt::=RETURN SEMICOLON;
+
+other_functions::= function function|function;
+function::=FDEF IDENTIFIER LPAREN;
+basic_data_type ::= BOOL
+                  | INT
+                  | RAT
+                  | FLOAT
+                  | CHAR
+                  | SEQ LEFT_SHARP basic_data_type RIGHT_SHARP
+                  | TOP;
+
+aggregate_data_type ::= DICT LEFT_SHARP basic_data_type COMMA basic_data_type RIGHT_SHARP
+                      | SEQ LEFT_SHARP basic_data_type RIGHT_SHARP;
+
+data_type ::= basic_data_type
+            | aggregate_data_type;
+
+declaration_list ::= IDENTIFIER COLON data_type
+                   | IDENTIFIER COLON data_type COMMA declaration_list;
+
+
+declaration ::= TDEF IDENTIFIER LBRACE declaration_list RBRACE SEMICOLON
+              | ALIAS data_type IDENTIFIER SEMICOLON;
+
+
+
+
+
 
 //seq.len
 //returntype
 //function name
-start with program;
-program ::=PLUS;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
