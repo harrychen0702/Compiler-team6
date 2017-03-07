@@ -69,14 +69,6 @@ Rational = {Fractional} | {Integer} | ({Positive_Integer} | {Negative_Integer}) 
 
 //**Keywords*************
 
-"bool" {return symbol(sym.BOOL);}
-"int" {return symbol(sym.INT);}
-"rat" {return symbol(sym.RAT);}
-"float" {return symbol(sym.FLOAT);}
-"char"    {return symbol(sym.CHAR);}
-
-"dict" {return symbol(sym.DICT);}
-"seq" {return symbol(sym.SEQ);}
 
 "main" {return symbol(sym.MAIN);}
 
