@@ -54,7 +54,7 @@ non terminal key,value,top,value_type;
 
 non terminal num_operater,bool_operator,boolean,other_variable_list,other_variable,bool_literal,key_literal,top_literal;
 
-non terminal aggre_literal,aggre_type,num_value_list,bool_value_list,compare_operator;
+non terminal aggre_literal,aggre_type,num_value_list,bool_value_list,compare_operator,assignment;
 // Eliminating Ambiguity   终结符的优先级和结合性 (消除二义性)
 //Precedences
 precedence left PLUS, MINUS;
@@ -81,17 +81,19 @@ program ::=  main_function
 
 
 main_function::=MAIN LBRACE stmts RBRACE SEMICOLON;
-//---------------------------stmt
+//---------------------------stmt-------------------
 stmts::=stmt stmt|
         stmt;
 
 stmt::=stmt_return SEMICOLON
        |declaration SEMICOLON
        |READ IDENTIFIER SEMICOLON
-       |PRINT expr SEMICOLON;
-stmt_return::=RETURN num_literal|RETURN;
+       |PRINT expr SEMICOLON
+       |assignment SEMICOLON;
 
+stmt_return::=RETURN  expr|RETURN;
 
+assignment::=IDENTIFIER ASSIGN expr;
 
 other_functions::= function function|function;
 
@@ -164,7 +166,7 @@ seq_context::= seq_value
               |;
 
 //--------------------declaration------------------
-decl_primitive::=IDENTIFIER SEMICOLON primitive_type ASSIGN num_expr;
+decl_primitive::=IDENTIFIER SEMICOLON primitive_type ASSIGN expr;
 
 declaration ::=
               | decl_dict
