@@ -1,6 +1,10 @@
 
 main {
-    books:seq<string> := [s1,s2,s3];
+   fdef alice () {
+     return 5;
+   } : int;
+
+    s1:string := "Alice in Wonderland";
     
 	alias seq<char> string;
 	alias fred spud;

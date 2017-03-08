@@ -199,17 +199,20 @@ decl_seq::=IDENTIFIER COLON SEQ LEFT_SHARP key RIGHT_SHARP ASSIGN LEFT_SQUARE_BR
            |IDENTIFIER COLON SEQ LEFT_SHARP IDENTIFIER RIGHT_SHARP ASSIGN LEFT_SQUARE_BRACKET seq_context RIGHT_SQUARE_BRACKET
            |IDENTIFIER COLON SEQ LEFT_SHARP IDENTIFIER RIGHT_SHARP ASSIGN exprs;
 
-seq_value::=data_literal;
+seq_value::=data_literal
+           | IDENTIFIER;
 
 seq_context::= seq_value
               |seq_value COMMA seq_context
-              |IDENTIFIER
               |;
 
 
-//--------------------declaration------------------
+//*****************--------------------declaration------------------
 decl_primitive::=IDENTIFIER COLON key ASSIGN exprs
-                |IDENTIFIER COLON key;
+                |IDENTIFIER COLON key
+                |IDENTIFIER COLON IDENTIFIER;
+
+
 
 decl_tdef_assign::=IDENTIFIER COLON IDENTIFIER ASSIGN tdef_assign;
 
@@ -239,7 +242,9 @@ declaration_list ::= IDENTIFIER COLON data_type
                    | IDENTIFIER COLON IDENTIFIER
                    | IDENTIFIER COLON IDENTIFIER COMMA declaration_list
                    | IDENTIFIER COLON data_type COMMA declaration_list
-                   ;
+                   |;
+
+
 //--------------------expr and operator---------------
 bi_operator::=
              PLUS
@@ -255,7 +260,8 @@ bi_operator::=
            | NOT_EQUAL
            | LEFT_SHARP
            | RIGHT_SHARP
-           | LEFT_SHARP_EQUAL;
+           | LEFT_SHARP_EQUAL
+           | IN;
 
 
 
