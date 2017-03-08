@@ -302,7 +302,7 @@ expr::=num_expr
       |char_expr
       |func_call
       |LPAREN expr RPAREN
-      |LPAREN expr bi_operator expr RPAREN
+      |LPAREN expr bi_operator exprs RPAREN
       |IDENTIFIER
       |NOT expr;
 
