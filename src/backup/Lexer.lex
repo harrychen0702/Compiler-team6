@@ -54,7 +54,6 @@ Integer = {Positive_Integer}|{Negative_Integer}|0
 Float = {Integer}"."{Digit}+
 Fractional = ({Positive_Integer} | {Negative_Integer}) "/" ({Positive_Integer} | {Negative_Integer})
 Rational = {Fractional} | {Integer} | ({Positive_Integer} | {Negative_Integer}) "_" {Fractional}
-Number = {Rational} | {Float}
 
 
 
@@ -70,7 +69,7 @@ Number = {Rational} | {Float}
 
 //**Keywords*************
 
-
+// try
 "main" {return symbol(sym.MAIN);}
 
 "bool" {return symbol(sym.BOOL);}
@@ -120,11 +119,6 @@ Number = {Rational} | {Float}
 "else"  {return symbol(sym.ELSE);}
 "break" {return symbol(sym.BREAK);}
 "return"    {return symbol(sym.RETURN);}
-<<<<<<< HEAD
-":="  {reuturn symbol(sym.ASSIGN);}
-=======
-":="  {return symbol(sym.ASSIGN);}
->>>>>>> archie
 
 
 
@@ -145,7 +139,6 @@ Number = {Rational} | {Float}
 //**Dict operator
 "in" { return symbol(sym.IN); }
 "::" { return symbol(sym.CONCATENATION); }
-">"  { return symbol(sym.RIGHT_SHARP);}
 
 //**Comparison
 "<" { return symbol(sym.LEFT_SHARP); }
@@ -156,8 +149,7 @@ Number = {Rational} | {Float}
 //**Symbol****************
 "[" { return symbol(sym.LEFT_SQUARE_BRACKET); }
 "]" { return symbol(sym.RIGHT_SQUARE_BRACKET); }
-"T" { return symbol(sym.TRUE);}
-"F" { return symbol(sym.FALSE);}
+
 
 //**宏定义*********************//
 {Whitespace}        {}
@@ -165,12 +157,10 @@ Number = {Rational} | {Float}
 {Float} 			{ return symbol(sym.FLOAT_LITERAL); }
 {Integer}			{ return symbol(sym.INT_LITERAL); }
 {Rational}			{ return symbol(sym.RAT_LITERAL); }
-//{Boolean}           { return symbol(sym.BOOL_LITERAL);}
 {String}			{ return symbol(sym.STRING_LITERAL); }
+{Boolean}			{ return symbol(sym.BOOL_LITERAL); }
 {Identifier}		{ return symbol(sym.IDENTIFIER); }
-{Number}            { return symbol(sym.NUMBER); }
-{Comment}           {}
->>>>>>> archie
+
 
 }
 
