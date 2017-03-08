@@ -120,6 +120,9 @@ Number = {Rational} | {Float}
 "else"  {return symbol(sym.ELSE);}
 "break" {return symbol(sym.BREAK);}
 "return"    {return symbol(sym.RETURN);}
+":="  {return symbol(sym.ASSIGN);}
+
+
 
 
 //**Boolean***************

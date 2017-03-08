@@ -23,17 +23,19 @@ terminal PLUS,MINUS,TIMES,DIVIDE,POWER,MOD,UMINUS;
 
 terminal COMMA,COLON,LBRACE,RBRACE,SEMICOLON,LPAREN,RPAREN,DOT,QUESTION;
 
-terminal DICT,SEQ,TOP,LEN,INT,CHAR,RAT,FLOAT,TDEF,FDEF,BOOL,ALIAS,NUMBER;
+terminal DICT,SEQ,TOP,LEN,INT,CHAR,RAT,FLOAT,TDEF,FDEF,BOOL,ALIAS;
 
 terminal NULL,ASSIGN,TRUE,FALSE;
 
-terminal NOT,AND,OR,IMPLICATION,ASSIGN;
+terminal NOT,AND,OR,IMPLICATION;
 
 terminal READ,PRINT,IF,THEN,ENDIF,LOOP,POOL,ELSE,BREAK,RETURN;
 
 terminal IN,CONCATENATION,RIGHT_SHARP;
 
 terminal LEFT_SHARP,LEFT_SHARP_EQUAL,EQUAL,NOT_EQUAL,LEFT_SQUARE_BRACKET,RIGHT_SQUARE_BRACKET;
+
+
 
 //************Nonterminal***************
 non terminal program, main_function, other_functions,function;
@@ -63,6 +65,13 @@ precedence left UMINUS;
 precedence left CONCATENATION, AND, OR;
 precedence right POWER, IN;
 //precedence nonassoc NOT, L_ANGLE, LESSEQ, EQEQ, NOTEQ, L_SQUARE;
+
+
+
+//CFG 文法
+
+//在文法中的每一个产生式有一个非终结符在左边，然后是 ::=，其后是零个或多个动作，终结符，非终结符等，再后面是一个分号
+
 
 
 //********Productions*****************
@@ -307,6 +316,19 @@ bool_expr::= bool_value_list
 //seq.len
 //returntype
 //function name
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
