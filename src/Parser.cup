@@ -110,10 +110,10 @@ stmt_return::=RETURN  exprs|RETURN;
 
 assignment::=IDENTIFIER ASSIGN exprs;
 
-other_functions::= function other_functions
-                  |function;
+other_functions::= declaration SEMICOLON
+                  |declaration SEMICOLON other_functions;
 
-function::=decl_fdef SEMICOLON;
+//function::=decl_fdef SEMICOLON;
 
 expr_list::=tdef_assign
             |;
@@ -169,12 +169,15 @@ value::=top_literal;
 
 decl_seq::=IDENTIFIER COLON SEQ LEFT_SHARP key RIGHT_SHARP ASSIGN LEFT_SQUARE_BRACKET seq_context RIGHT_SQUARE_BRACKET
            |IDENTIFIER COLON SEQ LEFT_SHARP key RIGHT_SHARP ASSIGN con_expr
-           |IDENTIFIER COLON SEQ LEFT_SHARP key RIGHT_SHARP ASSIGN IDENTIFIER;
-
+           |IDENTIFIER COLON SEQ LEFT_SHARP key RIGHT_SHARP ASSIGN IDENTIFIER
+           |IDENTIFIER COLON SEQ LEFT_SHARP IDENTIFIER RIGHT_SHARP ASSIGN IDENTIFIER
+           |IDENTIFIER COLON SEQ LEFT_SHARP IDENTIFIER RIGHT_SHARP ASSIGN con_expr
+           |IDENTIFIER COLON SEQ LEFT_SHARP IDENTIFIER RIGHT_SHARP ASSIGN LEFT_SQUARE_BRACKET seq_context RIGHT_SQUARE_BRACKET;
 seq_value::=data_literal;
 
 seq_context::= seq_value
               |seq_value COMMA seq_context
+              |IDENTIFIER
               |;
 
 //--------------------declaration------------------
