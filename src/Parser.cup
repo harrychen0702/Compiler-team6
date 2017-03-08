@@ -178,7 +178,7 @@ decl_fdef::=FDEF IDENTIFIER LPAREN declaration_list RPAREN LBRACE stmts RBRACE
 
 
 declaration ::=
-              | decl_dict
+                decl_dict
               | decl_primitive
               | decl_seq
               | decl_alias
