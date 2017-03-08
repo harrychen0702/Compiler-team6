@@ -99,6 +99,7 @@ stmt::=stmt_return SEMICOLON
        |PRINT exprs SEMICOLON
        |assignment SEMICOLON
        |stmt_break SEMICOLON
+       |func_call SEMICOLON
        |stmt_loop
        |stmt_ifelse;
 
