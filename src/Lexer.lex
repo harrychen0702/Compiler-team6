@@ -161,6 +161,7 @@ Number = {Rational} | {Float}
 {Float} 			{ return symbol(sym.FLOAT_LITERAL); }
 {Integer}			{ return symbol(sym.INT_LITERAL); }
 {Rational}			{ return symbol(sym.RAT_LITERAL); }
+{Boolean}           { return symbol(sym.BOOl_LITERAL);}
 {String}			{ return symbol(sym.STRING_LITERAL); }
 {Identifier}		{ return symbol(sym.IDENTIFIER); }
 {Number}            { return symbol(sym.NUMBER); }
