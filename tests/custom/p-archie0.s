@@ -92,7 +92,7 @@ fdef archie(inseq:asda){
   tdef family {mother:person, father:person, children:seq<person>};
   tdef family {mother:person, father:person, children:seq<person>}; # family fdefinition
   tdef person {name:string, surname:string, age:int}; # person fdefinition
-
+  f:family := m,p,a[1],a[jdkklsajd];
   tdef family {mother:person, father:person, children:seq<person>}; # family fdefinition
 
 }:seq<top>;
