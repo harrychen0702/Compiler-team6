@@ -108,7 +108,12 @@ stmt_break::=BREAK
             |BREAK INT_LITERAL;
 
 stmt_ifelse::=  IF LPAREN exprs RPAREN THEN stmts ENDIF
-               |IF LPAREN exprs RPAREN THEN stmts ELSE stmts ENDIF;
+               |IF LPAREN exprs RPAREN THEN stmts ELSE stmts ENDIF
+               |IF LPAREN exprs RPAREN THEN ENDIF
+               |IF LPAREN exprs RPAREN THEN stmts ELSE ENDIF
+               |IF LPAREN exprs RPAREN THEN  ELSE stmts ENDIF
+               |IF LPAREN exprs RPAREN THEN  ELSE ENDIF;
+
 
 stmt_loop::= LOOP stmts POOL
             |LOOP POOL;
@@ -190,11 +195,9 @@ value::=top_literal;
 //----------------------------Sequence-------------------
 
 decl_seq::=IDENTIFIER COLON SEQ LEFT_SHARP key RIGHT_SHARP ASSIGN LEFT_SQUARE_BRACKET seq_context RIGHT_SQUARE_BRACKET
-           |IDENTIFIER COLON SEQ LEFT_SHARP key RIGHT_SHARP ASSIGN con_expr
-           |IDENTIFIER COLON SEQ LEFT_SHARP key RIGHT_SHARP ASSIGN IDENTIFIER
-           |IDENTIFIER COLON SEQ LEFT_SHARP IDENTIFIER RIGHT_SHARP ASSIGN IDENTIFIER
-           |IDENTIFIER COLON SEQ LEFT_SHARP IDENTIFIER RIGHT_SHARP ASSIGN con_expr
-           |IDENTIFIER COLON SEQ LEFT_SHARP IDENTIFIER RIGHT_SHARP ASSIGN LEFT_SQUARE_BRACKET seq_context RIGHT_SQUARE_BRACKET;
+           |IDENTIFIER COLON SEQ LEFT_SHARP key RIGHT_SHARP ASSIGN exprs
+           |IDENTIFIER COLON SEQ LEFT_SHARP IDENTIFIER RIGHT_SHARP ASSIGN LEFT_SQUARE_BRACKET seq_context RIGHT_SQUARE_BRACKET
+           |IDENTIFIER COLON SEQ LEFT_SHARP IDENTIFIER RIGHT_SHARP ASSIGN exprs;
 
 seq_value::=data_literal;
 
@@ -205,7 +208,8 @@ seq_context::= seq_value
 
 
 //--------------------declaration------------------
-decl_primitive::=IDENTIFIER COLON key ASSIGN exprs;
+decl_primitive::=IDENTIFIER COLON key ASSIGN exprs
+                |IDENTIFIER COLON key;
 
 decl_tdef_assign::=IDENTIFIER COLON IDENTIFIER ASSIGN tdef_assign;
 
@@ -295,8 +299,7 @@ expr::=num_expr
       |func_call
       |LPAREN expr RPAREN
       |IDENTIFIER
-      |NOT expr
-      ;
+      |NOT expr;
 
 char_value_list::=STRING_LITERAL
                   |CHAR_LITERAL;
