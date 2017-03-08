@@ -6,6 +6,7 @@ main {
 
   if (s1 < s2 || s1 = s2) then
      #b  :=  s1 + s2 / (s1 + s2) <= 30;
+     b:= (a + a + ((1 + c)));
   fi
 
   return;

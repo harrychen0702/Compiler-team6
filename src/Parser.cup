@@ -66,7 +66,6 @@ precedence right POWER, IN;
 //precedence nonassoc NOT, L_ANGLE, LESSEQ, EQEQ, NOTEQ, L_SQUARE;
 
 
-
 //CFG 文法
 
 //在文法中的每一个产生式有一个非终结符在左边，然后是 ::=，其后是零个或多个动作，终结符，非终结符等，再后面是一个分号
@@ -107,11 +106,7 @@ stmt_break::=BREAK
             |BREAK INT_LITERAL;
 
 stmt_ifelse::=  IF LPAREN exprs RPAREN THEN stmts ENDIF
-               |IF LPAREN exprs RPAREN THEN stmts ELSE stmts ENDIF
-               |IF LPAREN exprs RPAREN THEN ENDIF
-               |IF LPAREN exprs RPAREN THEN stmts ELSE ENDIF
-               |IF LPAREN exprs RPAREN THEN  ELSE stmts ENDIF
-               |IF LPAREN exprs RPAREN THEN  ELSE ENDIF;
+               |IF LPAREN exprs RPAREN THEN stmts ELSE stmts ENDIF;
 
 
 stmt_loop::= LOOP stmts POOL
@@ -198,17 +193,18 @@ decl_seq::=IDENTIFIER COLON SEQ LEFT_SHARP key RIGHT_SHARP ASSIGN LEFT_SQUARE_BR
            |IDENTIFIER COLON SEQ LEFT_SHARP IDENTIFIER RIGHT_SHARP ASSIGN LEFT_SQUARE_BRACKET seq_context RIGHT_SQUARE_BRACKET
            |IDENTIFIER COLON SEQ LEFT_SHARP IDENTIFIER RIGHT_SHARP ASSIGN exprs;
 
-seq_value::=data_literal;
+seq_value::=data_literal
+           | IDENTIFIER;
 
 seq_context::= seq_value
               |seq_value COMMA seq_context
-              |IDENTIFIER
               |;
 
 
 //--------------------declaration------------------
 decl_primitive::=IDENTIFIER COLON key ASSIGN exprs
-                |IDENTIFIER COLON key;
+                |IDENTIFIER COLON key
+                |IDENTIFIER COLON IDENTIFIER;
 
 decl_tdef_assign::=IDENTIFIER COLON IDENTIFIER ASSIGN tdef_assign;
 
@@ -238,6 +234,7 @@ declaration_list ::= IDENTIFIER COLON data_type
                    | IDENTIFIER COLON IDENTIFIER
                    | IDENTIFIER COLON IDENTIFIER COMMA declaration_list
                    | IDENTIFIER COLON data_type COMMA declaration_list
+                   |
                    ;
 //--------------------expr and operator---------------
 bi_operator::=
@@ -254,7 +251,8 @@ bi_operator::=
            | NOT_EQUAL
            | LEFT_SHARP
            | RIGHT_SHARP
-           | LEFT_SHARP_EQUAL;
+           | LEFT_SHARP_EQUAL
+           |IN;
 
 
 
@@ -270,6 +268,7 @@ compare_operator::=LEFT_SHARP
                    |LEFT_SHARP_EQUAL
                    |EQUAL
                    |NOT_EQUAL;
+
 
 num_expr::=num_value_list;
 
@@ -289,7 +288,12 @@ num_operator ::=
            | CONCATENATION;
 
 exprs::=expr
+       // |exprs bi_operator exprs
         |expr bi_operator exprs;
+//        |LPAREN expr bi_operator exprs RPAREN;
+       // |exprs bi_operator expr;
+
+
 
 expr::=num_expr
       |bool_expr
@@ -297,6 +301,7 @@ expr::=num_expr
       |char_expr
       |func_call
       |LPAREN expr RPAREN
+      |LPAREN expr bi_operator expr RPAREN
       |IDENTIFIER
       |NOT expr;
 
