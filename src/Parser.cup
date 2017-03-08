@@ -286,8 +286,7 @@ num_expr::=num_value_list;
 
 num_value_list::=
               num_literal
-             |IDENTIFIER LEFT_SQUARE_BRACKET num_value_list RIGHT_SQUARE_BRACKET
-             |IDENTIFIER LEFT_SQUARE_BRACKET IDENTIFIER RIGHT_SQUARE_BRACKET
+
             //  |IDENTIFIER DOT LEN
             // |IDENTIFIER num_operator num_value_list
              ;
@@ -314,6 +313,9 @@ expr::=num_expr
       |seq_literal_2
       |IDENTIFIER DOT IDENTIFIER
       |IDENTIFIER DOT LEN
+      |IDENTIFIER LEFT_SQUARE_BRACKET exprs RIGHT_SQUARE_BRACKET
+   //   |IDENTIFIER LEFT_SQUARE_BRACKET IDENTIFIER RIGHT_SQUARE_BRACKET
+
       ;
 
 char_value_list::=STRING_LITERAL
@@ -335,8 +337,7 @@ con_expr::=
 
 bool_value_list::=bool_literal;
 
-value_list::=bool_value_list|char_value_list|num_value_list|IDENTIFIER
-            ;
+value_list::=bool_value_list|char_value_list|num_value_list|IDENTIFIER;
 
 //seq_expr::=LEFT_SQUARE_BRACKET RIGHT_SQUARE_BRACKET;
 
