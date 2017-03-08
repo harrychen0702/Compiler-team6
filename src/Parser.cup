@@ -55,6 +55,7 @@ non terminal key,value,top,value_type,char_expr,char_value_list,expr_list;
 non terminal num_operator,bool_operator,boolean,other_variable_list,other_variable,bool_literal,key_literal,top_literal;
 
 non terminal aggre_literal,aggre_type,num_value_list,bool_value_list,compare_operator,assignment;
+
 // Eliminating Ambiguity   终结符的优先级和结合性 (消除二义性)
 //Precedences
 precedence left PLUS, MINUS;
@@ -111,11 +112,26 @@ stmt_ifelse::=  IF LPAREN exprs RPAREN THEN stmts ENDIF
 stmt_loop::= LOOP stmts POOL
             |LOOP POOL;
 
+
+//stmt_break::=BREAK
+//            |BREAK INT_LITERAL;
+//
+//stmt_ifelse::=  IF LPAREN exprs RPAREN THEN stmts ENDIF
+//               |IF LPAREN exprs RPAREN THEN stmts ELSE stmts ENDIF;
+//
+//stmt_loop::= LOOP stmts POOL
+//            |LOOP POOL;
+
 assignment::=IDENTIFIER ASSIGN exprs;
+
 
 other_functions::= function other_functions
                   |function
 ;
+
+//other_functions::= declaration SEMICOLON
+//                  |declaration SEMICOLON other_functions;
+
 
 function::=decl_fdef SEMICOLON;
 
@@ -183,16 +199,15 @@ value::=top_literal;
 decl_seq::=IDENTIFIER COLON SEQ LEFT_SHARP key RIGHT_SHARP ASSIGN LEFT_SQUARE_BRACKET seq_context RIGHT_SQUARE_BRACKET
            |IDENTIFIER COLON SEQ LEFT_SHARP key RIGHT_SHARP ASSIGN con_expr
            |IDENTIFIER COLON SEQ LEFT_SHARP key RIGHT_SHARP ASSIGN IDENTIFIER
-           |IDENTIFIER COLON SEQ LEFT_SHARP IDENTIFIER RIGHT_SHARP ASSIGN LEFT_SQUARE_BRACKET seq_context RIGHT_SQUARE_BRACKET
+           |IDENTIFIER COLON SEQ LEFT_SHARP IDENTIFIER RIGHT_SHARP ASSIGN IDENTIFIER
            |IDENTIFIER COLON SEQ LEFT_SHARP IDENTIFIER RIGHT_SHARP ASSIGN con_expr
-           |IDENTIFIER COLON SEQ LEFT_SHARP IDENTIFIER RIGHT_SHARP ASSIGN IDENTIFIER;
+           |IDENTIFIER COLON SEQ LEFT_SHARP IDENTIFIER RIGHT_SHARP ASSIGN LEFT_SQUARE_BRACKET seq_context RIGHT_SQUARE_BRACKET;
 
 seq_value::=data_literal;
 
 seq_context::= seq_value
               |seq_value COMMA seq_context
               |IDENTIFIER
-              |IDENTIFIER COMMA seq_context
               |;
 
 
