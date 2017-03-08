@@ -46,7 +46,7 @@ non terminal stmt_return,stmt_break,stmt_ifelse,stmt_loop,num_literal,num_type,p
 
 non terminal declaration_list,decl_primitive,decl_dict,decl_seq,seq_value,decl_tdef,decl_alias,decl_fdef,decl_tdef_assign;
 
-non terminal dict_context,seq_context,bi_operator,value_list,seq_index;
+non terminal dict_context,seq_context,bi_operator,value_list,seq_index,seq_type;
 
 non terminal basic_data_type,data_literal,aggregate_data_type,data_type,tdef_assign,func_call;
 
@@ -113,27 +113,17 @@ stmt_loop::= LOOP stmts POOL
             |LOOP POOL;
 
 
-//stmt_break::=BREAK
-//            |BREAK INT_LITERAL;
-//
-//stmt_ifelse::=  IF LPAREN exprs RPAREN THEN stmts ENDIF
-//               |IF LPAREN exprs RPAREN THEN stmts ELSE stmts ENDIF;
-//
-//stmt_loop::= LOOP stmts POOL
-//            |LOOP POOL;
-
 assignment::=IDENTIFIER ASSIGN exprs;
 
 
-other_functions::= function other_functions
-                  |function
-;
+other_functions::= declaration SEMICOLON
+                  |declaration SEMICOLON other_functions;
 
 //other_functions::= declaration SEMICOLON
 //                  |declaration SEMICOLON other_functions;
 
 
-function::=decl_fdef SEMICOLON;
+//function::=decl_fdef SEMICOLON;
 
 expr_list::=tdef_assign
             |;
@@ -154,7 +144,9 @@ top::=data_type;
 
 top_literal::=data_literal;
 
-aggre_type::=SEQ LEFT_SHARP key RIGHT_SHARP;
+aggre_type::=SEQ LEFT_SHARP seq_type RIGHT_SHARP;
+
+seq_type::=key|IDENTIFIER;
 
 aggre_literal::=seq_literal
                 |dict_literal
@@ -226,7 +218,7 @@ decl_fdef::=FDEF IDENTIFIER LPAREN declaration_list RPAREN LBRACE stmts RBRACE
 
 
 
-declaration ::=decl_dict
+declaration ::= decl_dict
               | decl_primitive
               | decl_seq
               | decl_alias
