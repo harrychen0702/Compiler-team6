@@ -120,13 +120,6 @@ Number = {Rational} | {Float}
 "else"  {return symbol(sym.ELSE);}
 "break" {return symbol(sym.BREAK);}
 "return"    {return symbol(sym.RETURN);}
-<<<<<<< HEAD
-":="  {reuturn symbol(sym.ASSIGN);}
-=======
-":="  {return symbol(sym.ASSIGN);}
->>>>>>> archie
-
-
 
 
 //**Boolean***************
