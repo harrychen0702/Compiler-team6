@@ -55,6 +55,8 @@ non terminal key,value,top,value_type,char_expr,char_value_list,expr_list;
 non terminal num_operator,bool_operator,boolean,other_variable_list,other_variable,bool_literal,key_literal,top_literal;
 
 non terminal aggre_literal,aggre_type,num_value_list,bool_value_list,compare_operator,assignment;
+
+non terminal stmt_break, stmt_ifelse, stmt_loop;
 // Eliminating Ambiguity   终结符的优先级和结合性 (消除二义性)
 //Precedences
 precedence left PLUS, MINUS;
@@ -89,7 +91,20 @@ stmt::=stmt_return SEMICOLON
        |declaration SEMICOLON
        |READ IDENTIFIER SEMICOLON
        |PRINT exprs SEMICOLON
-       |assignment SEMICOLON;
+       |assignment SEMICOLON
+       |stmt_break SEMICOLON
+       |stmt_loop
+       |stmt_ifelse;
+
+stmt_break::=BREAK
+            |BREAK INT_LITERAL;
+
+stmt_ifelse::=  IF LPAREN exprs RPAREN THEN stmts ENDIF
+               |IF LPAREN exprs RPAREN THEN stmts ELSE stmts ENDIF;
+
+stmt_loop::= LOOP stmts POOL
+            |LOOP POOL;
+
 
 stmt_return::=RETURN  exprs|RETURN;
 
@@ -232,6 +247,7 @@ num_expr::=num_value_list;
 num_value_list::=
               num_literal
              |IDENTIFIER LEFT_SQUARE_BRACKET num_value_list RIGHT_SQUARE_BRACKET
+             |IDENTIFIER LEFT_SQUARE_BRACKET IDENTIFIER RIGHT_SQUARE_BRACKET
              |IDENTIFIER DOT LEN
              |IDENTIFIER LEFT_SQUARE_BRACKET num_value_list COLON
              |IDENTIFIER LEFT_SQUARE_BRACKET num_value_list COLON num_value_list
