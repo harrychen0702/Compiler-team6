@@ -1,3 +1,5 @@
+  tdef family {mother:person, father:person, children:seq<person>}; # family fdefinition
+
 fdef archie(inseq:asda){
   alias seq<char> string;
   alias seq<top> hahah;
@@ -87,4 +89,10 @@ fdef archie(inseq:asda){
   l1:seq<string> := ["a","b", "c", "d", "e"];
   anotherlist:seq<top> := [s1] :: [s2] :: newlist;
   thirdlist:seq<top> := l2[:-2] :: l2[3:];
+  tdef family {mother:person, father:person, children:seq<person>};
+  tdef family {mother:person, father:person, children:seq<person>}; # family fdefinition
+  tdef person {name:string, surname:string, age:int}; # person fdefinition
+
+  tdef family {mother:person, father:person, children:seq<person>}; # family fdefinition
+
 }:seq<top>;
