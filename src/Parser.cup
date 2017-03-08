@@ -44,9 +44,9 @@ non terminal declaration,expr,stmt,stmts,num_expr,bool_expr,con_expr,exprs;
 
 non terminal stmt_return,stmt_break,stmt_ifelse,stmt_loop,num_literal,num_type,primitive_type,primitive_literal,seq_literal,dict_literal;
 
-non terminal declaration_list,decl_primitive,decl_dict,decl_seq,seq_value,decl_tdef,decl_alias,decl_fdef,decl_tdef_assign;
+non terminal declaration_list_type,declaration_list_func,decl_primitive,decl_dict,decl_seq,seq_value,decl_tdef,decl_alias,decl_fdef,decl_tdef_assign;
 
-non terminal dict_context,seq_context,bi_operator,value_list,seq_index,seq_type;
+non terminal dict_context,seq_context,bi_operator,value_list,seq_index,seq_type,seq_expr,seq_literal_2;
 
 non terminal basic_data_type,data_literal,aggregate_data_type,data_type,tdef_assign,func_call;
 
@@ -108,18 +108,14 @@ stmt_break::=BREAK
             |BREAK INT_LITERAL;
 
 stmt_ifelse::=  IF LPAREN exprs RPAREN THEN stmts ENDIF
-               |IF LPAREN exprs RPAREN THEN stmts ELSE stmts ENDIF
-               |IF LPAREN exprs RPAREN THEN ENDIF
-               |IF LPAREN exprs RPAREN THEN stmts ELSE ENDIF
-               |IF LPAREN exprs RPAREN THEN  ELSE stmts ENDIF
-               |IF LPAREN exprs RPAREN THEN  ELSE ENDIF;
-
+               |IF LPAREN exprs RPAREN THEN stmts ELSE stmts ENDIF;
 
 stmt_loop::= LOOP stmts POOL
             |LOOP POOL;
 
 
-assignment::=IDENTIFIER ASSIGN exprs;
+assignment::=IDENTIFIER ASSIGN exprs
+             |IDENTIFIER DOT IDENTIFIER ASSIGN exprs;
 
 
 other_functions::= declaration SEMICOLON
@@ -132,7 +128,7 @@ other_functions::= declaration SEMICOLON
 //function::=decl_fdef SEMICOLON;
 
 expr_list::=tdef_assign
-            |;
+           |;
 
 func_call::=QUESTION exprs QUESTION IDENTIFIER LPAREN expr_list RPAREN;
 
@@ -155,10 +151,11 @@ aggre_type::=SEQ LEFT_SHARP seq_type RIGHT_SHARP;
 seq_type::=key|IDENTIFIER;
 
 aggre_literal::=seq_literal
-                |dict_literal
-                ;
-seq_literal::=LEFT_SQUARE_BRACKET seq_context RIGHT_SQUARE_BRACKET
-              |IDENTIFIER LEFT_SQUARE_BRACKET seq_index RIGHT_SQUARE_BRACKET;
+                |dict_literal;
+
+seq_literal::=LEFT_SQUARE_BRACKET seq_context RIGHT_SQUARE_BRACKET;
+
+seq_literal_2::=IDENTIFIER LEFT_SQUARE_BRACKET seq_index RIGHT_SQUARE_BRACKET;
 
 seq_index::=exprs COLON
             |COLON exprs
@@ -190,36 +187,39 @@ key_literal::=num_expr;
 
 value_type::=top;
 
-value::=top_literal;
+value::=exprs;
 
 //----------------------------Sequence-------------------
 
-decl_seq::=IDENTIFIER COLON SEQ LEFT_SHARP key RIGHT_SHARP ASSIGN LEFT_SQUARE_BRACKET seq_context RIGHT_SQUARE_BRACKET
-           |IDENTIFIER COLON SEQ LEFT_SHARP key RIGHT_SHARP ASSIGN exprs
-           |IDENTIFIER COLON SEQ LEFT_SHARP IDENTIFIER RIGHT_SHARP ASSIGN LEFT_SQUARE_BRACKET seq_context RIGHT_SQUARE_BRACKET
+decl_seq::=//IDENTIFIER COLON SEQ LEFT_SHARP key RIGHT_SHARP ASSIGN seq_literal
+           IDENTIFIER COLON SEQ LEFT_SHARP key RIGHT_SHARP ASSIGN exprs
+           //|IDENTIFIER COLON SEQ LEFT_SHARP key RIGHT_SHARP ASSIGN IDENTIFIER
+           //|IDENTIFIER COLON SEQ LEFT_SHARP IDENTIFIER RIGHT_SHARP ASSIGN IDENTIFIER
            |IDENTIFIER COLON SEQ LEFT_SHARP IDENTIFIER RIGHT_SHARP ASSIGN exprs;
+           //|IDENTIFIER COLON SEQ LEFT_SHARP IDENTIFIER RIGHT_SHARP ASSIGN seq_literal;
 
-seq_value::=data_literal;
+seq_value::=exprs;
 
 seq_context::= seq_value
               |seq_value COMMA seq_context
-              |IDENTIFIER
+             // |IDENTIFIER
               |;
 
 
 //--------------------declaration------------------
 decl_primitive::=IDENTIFIER COLON key ASSIGN exprs
-                |IDENTIFIER COLON key;
+                |IDENTIFIER COLON key
+                |IDENTIFIER COLON IDENTIFIER;
 
 decl_tdef_assign::=IDENTIFIER COLON IDENTIFIER ASSIGN tdef_assign;
 
 tdef_assign::=exprs|
               exprs COMMA tdef_assign;
 
-decl_tdef::=TDEF IDENTIFIER LBRACE declaration_list RBRACE;
+decl_tdef::=TDEF IDENTIFIER LBRACE declaration_list_type RBRACE;
 
-decl_fdef::=FDEF IDENTIFIER LPAREN declaration_list RPAREN LBRACE stmts RBRACE
-            |FDEF IDENTIFIER LPAREN declaration_list RPAREN LBRACE stmts RBRACE COLON data_type;
+decl_fdef::=FDEF IDENTIFIER LPAREN declaration_list_func RPAREN LBRACE stmts RBRACE
+            |FDEF IDENTIFIER LPAREN declaration_list_func RPAREN LBRACE stmts RBRACE COLON data_type;
 
 
 
@@ -229,16 +229,24 @@ declaration ::= decl_dict
               | decl_alias
               | decl_tdef
               | decl_fdef
-              | decl_tdef_assign;
+              | decl_tdef_assign
+              ;
 
 decl_alias::=ALIAS IDENTIFIER IDENTIFIER
             |ALIAS data_type IDENTIFIER
             ;
 
-declaration_list ::= IDENTIFIER COLON data_type
+declaration_list_type ::= IDENTIFIER COLON data_type
                    | IDENTIFIER COLON IDENTIFIER
-                   | IDENTIFIER COLON IDENTIFIER COMMA declaration_list
-                   | IDENTIFIER COLON data_type COMMA declaration_list
+                   | IDENTIFIER COLON IDENTIFIER COMMA declaration_list_type
+                   | IDENTIFIER COLON data_type COMMA declaration_list_type
+                   ;
+
+declaration_list_func ::= IDENTIFIER COLON data_type
+                   | IDENTIFIER COLON IDENTIFIER
+                   | IDENTIFIER COLON IDENTIFIER COMMA declaration_list_func
+                   | IDENTIFIER COLON data_type COMMA declaration_list_func
+                   |
                    ;
 //--------------------expr and operator---------------
 bi_operator::=
@@ -255,7 +263,8 @@ bi_operator::=
            | NOT_EQUAL
            | LEFT_SHARP
            | RIGHT_SHARP
-           | LEFT_SHARP_EQUAL;
+           | LEFT_SHARP_EQUAL
+           | IN;
 
 
 
@@ -263,7 +272,8 @@ bool_operator::= AND
                 |OR
                 |IMPLICATION
                 |EQUAL
-                |NOT_EQUAL;
+                |NOT_EQUAL
+                |IN;
 
 compare_operator::=LEFT_SHARP
                    |RIGHT_SHARP
@@ -276,9 +286,8 @@ num_expr::=num_value_list;
 
 num_value_list::=
               num_literal
-             |IDENTIFIER LEFT_SQUARE_BRACKET num_value_list RIGHT_SQUARE_BRACKET
-             |IDENTIFIER LEFT_SQUARE_BRACKET IDENTIFIER RIGHT_SQUARE_BRACKET
-             |IDENTIFIER DOT LEN
+
+            //  |IDENTIFIER DOT LEN
             // |IDENTIFIER num_operator num_value_list
              ;
 num_operator ::=
@@ -299,14 +308,23 @@ expr::=num_expr
       |func_call
       |LPAREN expr RPAREN
       |IDENTIFIER
-      |NOT expr;
+      |NOT expr
+      |seq_literal
+      |seq_literal_2
+      |IDENTIFIER DOT IDENTIFIER
+      |IDENTIFIER DOT LEN
+      |IDENTIFIER LEFT_SQUARE_BRACKET exprs RIGHT_SQUARE_BRACKET
+   //   |IDENTIFIER LEFT_SQUARE_BRACKET IDENTIFIER RIGHT_SQUARE_BRACKET
+
+      ;
 
 char_value_list::=STRING_LITERAL
                   |CHAR_LITERAL;
 
 char_expr::= char_value_list;
 
-con_expr::=seq_literal CONCATENATION seq_literal
+con_expr::=
+            seq_literal CONCATENATION seq_literal
           | IDENTIFIER CONCATENATION seq_literal
           | seq_literal CONCATENATION IDENTIFIER
           | IDENTIFIER CONCATENATION IDENTIFIER
@@ -321,10 +339,12 @@ bool_value_list::=bool_literal;
 
 value_list::=bool_value_list|char_value_list|num_value_list|IDENTIFIER;
 
+//seq_expr::=LEFT_SQUARE_BRACKET RIGHT_SQUARE_BRACKET;
+
 bool_expr::= bool_value_list
             //bool_value_list bool_operator bool_expr
             //|num_expr compare_operator num_expr
-            |key IN aggre_literal;
+             |key IN aggre_literal;
          //   |NOT bool_expr;
 
 
