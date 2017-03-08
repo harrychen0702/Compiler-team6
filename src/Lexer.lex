@@ -49,12 +49,12 @@ SecondComment = "/#" [^#]* "#/" | "/#" [#] +"/"
 
 
 Positive_Integer = [1-9]{Digit}* 
-Positive_Integer = [1-9]{Digit}*
 Negative_Integer = -{Positive_Integer}
 Integer = {Positive_Integer}|{Negative_Integer}|0
 Float = {Integer}"."{Digit}+
 Fractional = ({Positive_Integer} | {Negative_Integer}) "/" ({Positive_Integer} | {Negative_Integer})
 Rational = {Fractional} | {Integer} | ({Positive_Integer} | {Negative_Integer}) "_" {Fractional}
+Number = {Rational} | {Float}
 
 
 
@@ -70,7 +70,7 @@ Rational = {Fractional} | {Integer} | ({Positive_Integer} | {Negative_Integer}) 
 
 //**Keywords*************
 
-// try
+
 "main" {return symbol(sym.MAIN);}
 
 "bool" {return symbol(sym.BOOL);}
@@ -119,7 +119,8 @@ Rational = {Fractional} | {Integer} | ({Positive_Integer} | {Negative_Integer}) 
 "pool"  {return symbol(sym.POOL);}
 "else"  {return symbol(sym.ELSE);}
 "break" {return symbol(sym.BREAK);}
-"return" {return symbol(sym.RETURN);}
+"return"    {return symbol(sym.RETURN);}
+":="  {return symbol(sym.ASSIGN);}
 
 
 
@@ -140,6 +141,7 @@ Rational = {Fractional} | {Integer} | ({Positive_Integer} | {Negative_Integer}) 
 //**Dict operator
 "in" { return symbol(sym.IN); }
 "::" { return symbol(sym.CONCATENATION); }
+">"  { return symbol(sym.RIGHT_SHARP);}
 
 //**Comparison
 "<" { return symbol(sym.LEFT_SHARP); }
@@ -150,7 +152,8 @@ Rational = {Fractional} | {Integer} | ({Positive_Integer} | {Negative_Integer}) 
 //**Symbol****************
 "[" { return symbol(sym.LEFT_SQUARE_BRACKET); }
 "]" { return symbol(sym.RIGHT_SQUARE_BRACKET); }
-
+"T" { return symbol(sym.TRUE);}
+"F" { return symbol(sym.FALSE);}
 
 //**宏定义*********************//
 {Whitespace}        {}
@@ -159,9 +162,9 @@ Rational = {Fractional} | {Integer} | ({Positive_Integer} | {Negative_Integer}) 
 {Integer}			{ return symbol(sym.INT_LITERAL); }
 {Rational}			{ return symbol(sym.RAT_LITERAL); }
 {String}			{ return symbol(sym.STRING_LITERAL); }
-{Boolean}			{ return symbol(sym.BOOL_LITERAL); }
 {Identifier}		{ return symbol(sym.IDENTIFIER); }
-
+{Number}            { return symbol(sym.NUMBER); }
+{Comment}           {}
 
 }
 
