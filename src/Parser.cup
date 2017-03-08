@@ -42,11 +42,11 @@ non terminal program, main_function, other_functions,function;
 
 non terminal declaration,expr,stmt,stmts,num_expr,bool_expr,con_expr,exprs;
 
-non terminal stmt_return,num_literal,num_type,primitive_type,primitive_literal,seq_literal,dict_literal;
+non terminal stmt_return,stmt_break,stmt_ifelse,stmt_loop,num_literal,num_type,primitive_type,primitive_literal,seq_literal,dict_literal;
 
 non terminal declaration_list,decl_primitive,decl_dict,decl_seq,seq_value,decl_tdef,decl_alias,decl_fdef,decl_tdef_assign;
 
-non terminal dict_context,seq_context,bi_operator,value_list;
+non terminal dict_context,seq_context,bi_operator,value_list,seq_index;
 
 non terminal basic_data_type,data_literal,aggregate_data_type,data_type,tdef_assign,func_call;
 
@@ -85,18 +85,37 @@ main_function::=MAIN LBRACE stmts RBRACE SEMICOLON;
 stmts::=stmt stmts|
         stmt;
 
+//stmt::=stmt_return SEMICOLON
+//       |declaration SEMICOLON
+//       |READ IDENTIFIER SEMICOLON
+//       |PRINT exprs SEMICOLON
+//       |assignment SEMICOLON;
+
+stmt_return::=RETURN  exprs|RETURN;
+
 stmt::=stmt_return SEMICOLON
        |declaration SEMICOLON
        |READ IDENTIFIER SEMICOLON
        |PRINT exprs SEMICOLON
-       |assignment SEMICOLON;
+       |assignment SEMICOLON
+       |stmt_break SEMICOLON
+       |stmt_loop
+       |stmt_ifelse;
 
-stmt_return::=RETURN  exprs|RETURN;
+stmt_break::=BREAK
+            |BREAK INT_LITERAL;
+
+stmt_ifelse::=  IF LPAREN exprs RPAREN THEN stmts ENDIF
+               |IF LPAREN exprs RPAREN THEN stmts ELSE stmts ENDIF;
+
+stmt_loop::= LOOP stmts POOL
+            |LOOP POOL;
 
 assignment::=IDENTIFIER ASSIGN exprs;
 
 other_functions::= function other_functions
-                  |function;
+                  |function
+;
 
 function::=decl_fdef SEMICOLON;
 
@@ -124,7 +143,16 @@ aggre_type::=SEQ LEFT_SHARP key RIGHT_SHARP;
 aggre_literal::=seq_literal
                 |dict_literal
                 ;
-seq_literal::=LEFT_SQUARE_BRACKET seq_context RIGHT_SQUARE_BRACKET;
+seq_literal::=LEFT_SQUARE_BRACKET seq_context RIGHT_SQUARE_BRACKET
+              |IDENTIFIER LEFT_SQUARE_BRACKET seq_index RIGHT_SQUARE_BRACKET;
+
+seq_index::=exprs COLON
+            |COLON exprs
+            |exprs COLON exprs;
+
+            //  |IDENTIFIER LEFT_SQUARE_BRACKET num_value_list COLON
+            //  |IDENTIFIER LEFT_SQUARE_BRACKET num_value_list COLON num_value_list
+            //  |IDENTIFIER LEFT_SQUARE_BRACKET COLON num_value_list
 
 dict_literal::=LBRACE dict_context RBRACE;
 
@@ -154,13 +182,19 @@ value::=top_literal;
 
 decl_seq::=IDENTIFIER COLON SEQ LEFT_SHARP key RIGHT_SHARP ASSIGN LEFT_SQUARE_BRACKET seq_context RIGHT_SQUARE_BRACKET
            |IDENTIFIER COLON SEQ LEFT_SHARP key RIGHT_SHARP ASSIGN con_expr
-           |IDENTIFIER COLON SEQ LEFT_SHARP key RIGHT_SHARP ASSIGN IDENTIFIER;
+           |IDENTIFIER COLON SEQ LEFT_SHARP key RIGHT_SHARP ASSIGN IDENTIFIER
+           |IDENTIFIER COLON SEQ LEFT_SHARP IDENTIFIER RIGHT_SHARP ASSIGN LEFT_SQUARE_BRACKET seq_context RIGHT_SQUARE_BRACKET
+           |IDENTIFIER COLON SEQ LEFT_SHARP IDENTIFIER RIGHT_SHARP ASSIGN con_expr
+           |IDENTIFIER COLON SEQ LEFT_SHARP IDENTIFIER RIGHT_SHARP ASSIGN IDENTIFIER;
 
 seq_value::=data_literal;
 
 seq_context::= seq_value
               |seq_value COMMA seq_context
+              |IDENTIFIER
+              |IDENTIFIER COMMA seq_context
               |;
+
 
 //--------------------declaration------------------
 decl_primitive::=IDENTIFIER COLON key ASSIGN exprs;
@@ -177,8 +211,7 @@ decl_fdef::=FDEF IDENTIFIER LPAREN declaration_list RPAREN LBRACE stmts RBRACE
 
 
 
-declaration ::=
-                decl_dict
+declaration ::=decl_dict
               | decl_primitive
               | decl_seq
               | decl_alias
@@ -232,10 +265,8 @@ num_expr::=num_value_list;
 num_value_list::=
               num_literal
              |IDENTIFIER LEFT_SQUARE_BRACKET num_value_list RIGHT_SQUARE_BRACKET
+             |IDENTIFIER LEFT_SQUARE_BRACKET IDENTIFIER RIGHT_SQUARE_BRACKET
              |IDENTIFIER DOT LEN
-             |IDENTIFIER LEFT_SQUARE_BRACKET num_value_list COLON
-             |IDENTIFIER LEFT_SQUARE_BRACKET num_value_list COLON num_value_list
-             |IDENTIFIER LEFT_SQUARE_BRACKET COLON num_value_list
             // |IDENTIFIER num_operator num_value_list
              ;
 num_operator ::=
@@ -247,8 +278,7 @@ num_operator ::=
            | CONCATENATION;
 
 exprs::=expr
-        |expr bi_operator exprs
-        |expr bi_operator LBRACE exprs RBRACE;
+        |expr bi_operator exprs;
 
 expr::=num_expr
       |bool_expr
