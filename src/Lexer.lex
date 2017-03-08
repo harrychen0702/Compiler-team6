@@ -50,7 +50,7 @@ SecondComment = "/#" [^#]* "#/" | "/#" [#] +"/"
 
 Positive_Integer = [1-9]{Digit}* 
 Negative_Integer = -{Positive_Integer}
-Integer = {Positive_Integer}|{Negative_Integer}|0
+Integer = {Positive_Integer}|0
 Float = {Integer}"."{Digit}+
 Fractional = ({Positive_Integer} | {Negative_Integer}) "/" ({Positive_Integer} | {Negative_Integer})
 Rational = {Fractional} | {Integer} | ({Positive_Integer} | {Negative_Integer}) "_" {Fractional}

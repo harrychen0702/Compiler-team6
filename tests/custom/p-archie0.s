@@ -64,11 +64,12 @@ fdef archie(inseq:asda){
   alias xiaofeng ku;
   k:=(k)+(1)*?T?foo(?T?sum(10,c,d,f,e),bar)-dsaklasj/j1leaskldja;
   j:=((((0))));
-  wwt:int:=((b))-?T?foo(?T?sum(10,c,d,f,e),bar);
+  wwt:int:=(((b))-?T?foo(?T?sum((10),c,d,f,e),(bar)));
   a:int:=1*c-dsajkldas+312+(b)-?T?foo(?T?sum(10,c,d,f,e),bar);
-  c:string:=c*c;
+  c:string:=(((c*c)));
   b:char:=('a');
   d:person:='a',"sjakdlaksjdklas",553,334;
+  g:int:=84398/1+2+(dsakdjlsa*fjsdklsd/4);
   f:seq<rat>:=[1,2];
   e:dict<int,char>:={1:'1',2:'2',3:'3'};
   f:seq<top>:=["dsjadklsa","3iodos"];
@@ -76,7 +77,7 @@ fdef archie(inseq:asda){
   tdef family{allen:chenxin,chenhao:seq<top>,father:person};
   g:int:= ?pred?foo(djsaldklsa,"dsajdljksa",43230423*4328998);
   d:bool:=TRUE;
-  c:bool:=2<i;
+  c:bool:=2;
   d:dd:=?T?foo(?T?sum(10,c,d,f,e),bar);
   zz:top:=s1::s2::[1,3,4]::s45; 
   #zz3:top:=d::f::e::g::j::[1,3,4];

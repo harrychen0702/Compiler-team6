@@ -94,7 +94,7 @@ stmts::=stmt stmts|
 
 stmt_return::=RETURN  exprs|RETURN;
 
-stmt::=stmt_return SEMICOLON
+stmt::= stmt_return SEMICOLON
        |declaration SEMICOLON
        |READ IDENTIFIER SEMICOLON
        |PRINT exprs SEMICOLON
@@ -266,8 +266,6 @@ bi_operator::=
            | LEFT_SHARP_EQUAL
            | IN;
 
-
-
 bool_operator::= AND
                 |OR
                 |IMPLICATION
@@ -284,8 +282,7 @@ compare_operator::=LEFT_SHARP
 
 num_expr::=num_value_list;
 
-num_value_list::=
-              num_literal
+num_value_list::=num_literal
 
             //  |IDENTIFIER DOT LEN
             // |IDENTIFIER num_operator num_value_list
@@ -303,10 +300,11 @@ exprs::=expr
 
 expr::=num_expr
       |bool_expr
-      |con_expr
+      //|con_expr
       |char_expr
       |func_call
       |LPAREN expr RPAREN
+      |LPAREN expr bi_operator exprs RPAREN
       |IDENTIFIER
       |NOT expr
       |seq_literal
@@ -314,6 +312,7 @@ expr::=num_expr
       |IDENTIFIER DOT IDENTIFIER
       |IDENTIFIER DOT LEN
       |IDENTIFIER LEFT_SQUARE_BRACKET exprs RIGHT_SQUARE_BRACKET
+      |MINUS expr
    //   |IDENTIFIER LEFT_SQUARE_BRACKET IDENTIFIER RIGHT_SQUARE_BRACKET
 
       ;
@@ -323,17 +322,17 @@ char_value_list::=STRING_LITERAL
 
 char_expr::= char_value_list;
 
-con_expr::=
-            seq_literal CONCATENATION seq_literal
-          | IDENTIFIER CONCATENATION seq_literal
-          | seq_literal CONCATENATION IDENTIFIER
-          | IDENTIFIER CONCATENATION IDENTIFIER
-          | seq_literal CONCATENATION con_expr
-          | IDENTIFIER CONCATENATION con_expr
-          | con_expr CONCATENATION seq_literal
-          | con_expr CONCATENATION IDENTIFIER
-          | con_expr CONCATENATION con_expr
-          ;
+//con_expr::=
+//            seq_literal CONCATENATION seq_literal
+//          | IDENTIFIER CONCATENATION seq_literal
+//          | seq_literal CONCATENATION IDENTIFIER
+//          | IDENTIFIER CONCATENATION IDENTIFIER
+//          | seq_literal CONCATENATION con_expr
+//          | IDENTIFIER CONCATENATION con_expr
+//          | con_expr CONCATENATION seq_literal
+//          | con_expr CONCATENATION IDENTIFIER
+//          | con_expr CONCATENATION con_expr
+//          ;
 
 bool_value_list::=bool_literal;
 
