@@ -163,7 +163,6 @@ Number = {Rational} | {Float}
 {Identifier}		{ return symbol(sym.IDENTIFIER); }
 {Number}            { return symbol(sym.NUMBER); }
 {Comment}           {}
->>>>>>> archie
 
 }
 
