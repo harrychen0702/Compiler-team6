@@ -138,7 +138,7 @@ Number = {Rational} | {Float}
 "/" { return symbol(sym.DIVIDE); }
 "^" { return symbol(sym.POWER); }
 
-//**Dict operator
+//**Dict operatorF
 "in" { return symbol(sym.IN); }
 "::" { return symbol(sym.CONCATENATION); }
 ">"  { return symbol(sym.RIGHT_SHARP);}
