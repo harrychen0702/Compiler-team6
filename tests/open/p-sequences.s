@@ -7,7 +7,7 @@ s2:string := "hello";
 main {
 
 
-  fnewlist:seq<top> := l1 :: l2;
+  fnewlist:seq<top> := l1 :: l2s;
   anotherlist:seq<top> := [s1] :: [s2] :: newlist;
   thirdlist:seq<top> := l2[:-2] :: l2[3:];
 

@@ -60,7 +60,7 @@ non terminal aggre_literal,aggre_type,num_value_list,bool_value_list,compare_ope
 
 non terminal basic_term,num_term,bool_term,char_term,seq_term;
 
-non terminal num_operator,bool_operator,char_operator,seq_operator,expr_without_bool;
+non terminal num_operator,bool_operator,char_operator,seq_operator,expr_without_bool,in_expr,com_operator,all_bool_operator,con_operator;
 
 // Eliminating Ambiguity   终结符的优先级和结合性 (消除二义性)
 //Precedences
@@ -349,21 +349,30 @@ num_operator ::=
 
 bool_operator::= AND
                 |OR
-                |IMPLICATION
-             //   |EQUAL
-             //   |NOT_EQUAL
+                |com_operator
                 //|IN
                 // expr IN SEQLITERAL
                 // NOT bool expr
                 ;
+com_operator::= IMPLICATION
+               |EQUAL
+               |NOT_EQUAL;
+
+con_operator::= AND
+                |OR;
 
 compare_operator::= LEFT_SHARP
                    |RIGHT_SHARP
-                  // |IMPLICATION
                    |LEFT_SHARP_EQUAL
-               //    |EQUAL
-               //    |NOT_EQUAL;
-;
+                   |com_operator;
+all_bool_operator::=
+                 AND
+                |OR
+                |LEFT_SHARP
+                |RIGHT_SHARP
+                |LEFT_SHARP_EQUAL
+                |com_operator;
+
 char_operator::=;
 
 seq_operator::=CONCATENATION;
@@ -385,42 +394,63 @@ num_expr::= num_term
 
            ;
 
-
+in_expr::=expr_without_bool IN seq_literal
+          |expr_without_bool IN basic_term;
 
 bool_expr::= bool_term
-            |bool_term bool_operator bool_expr
-            |basic_term bool_operator basic_term
-            |basic_term bool_operator bool_expr
+
+//            |bool_term con_operator bool_expr
+//            |basic_term con basic_term
+//            |basic_term con_operator bool_expr
+//            |bool_term bool_operator basic_term
+//            |bool_expr bool_operator basic_term
+            |bool_term bool_operator bool_term
+            |bool_term bool_operator bool_term con_operator bool_expr
+            |basic_term bool_operator bool_term
+            |basic_term bool_operator bool_term con_operator bool_expr
+            |bool_term bool_operator basic_term
+            |bool_term bool_operator basic_term con_operator bool_expr
+            |basic_term all_bool_operator basic_term
+            |basic_term all_bool_operator basic_term con_operator bool_expr
+
             |NOT bool_expr
 
-            |expr_without_bool IN seq_literal
-            |expr_without_bool IN seq_literal bool_operator bool_expr
 
-            |expr_without_bool IN basic_term
-            |expr_without_bool IN basic_term  bool_operator bool_expr
+            |in_expr
+            |in_expr  con_operator bool_expr
 
 
             |num_expr compare_operator num_expr
+            |num_expr compare_operator num_expr con_operator bool_expr
             |num_expr compare_operator basic_term
-            |basic_term compare_operator num_expr
-            |basic_term compare_operator basic_term
-
-            |expr_without_bool EQUAL expr_without_bool
-            |expr_without_bool NOT_EQUAL expr_without_bool
-
-            |bool_expr bool_operator bool_expr
+            |num_expr compare_operator basic_term con_operator bool_expr
+            |basic_term all_bool_operator num_expr
+            |basic_term all_bool_operator num_expr con_operator bool_expr
+        //    |basic_term compare_operator num_expr con_operator
+//
+//            |basic_term compare_operator num_expr
+//            |basic_term compare_operator basic_term
+//
+//            |expr_without_bool EQUAL expr_without_bool
+//            |expr_without_bool NOT_EQUAL expr_without_bool
+//
+//            |bool_expr bool_operator bool_expr
             |LPAREN bool_expr RPAREN
-            |LPAREN bool_expr RPAREN bool_operator bool_expr
+            |LPAREN bool_expr RPAREN con_operator bool_expr
+
+            |bool_expr con_operator bool_expr
           //  |LPAREN bool_expr RPAREN bool_operator LPAREN bool_expr RPAREN
             ;
 char_expr::=char_literal
             |LPAREN char_expr RPAREN;
 
-seq_expr::=seq_term
+seq_expr::= seq_term
            |seq_term seq_operator seq_expr
            |basic_term seq_operator seq_expr
            |basic_term seq_operator basic_term
            |seq_term seq_operator basic_term
+           |seq_expr seq_operator basic_term
+           |seq_expr seq_operator seq_expr
            |LPAREN seq_expr RPAREN
            |LPAREN seq_expr RPAREN seq_operator seq_expr;
 

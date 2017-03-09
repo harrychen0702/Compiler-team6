@@ -20,5 +20,9 @@ fdef sum(i:float, j:float) {
      return i + j;
 } : float;
 
+fdef sum(i:float, j:float) {
+     return i + j;
+} : seq<top>;
+
 
 
