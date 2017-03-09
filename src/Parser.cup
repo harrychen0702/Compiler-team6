@@ -50,11 +50,11 @@ non terminal declaration_list_type,declaration_list_func,decl_variable,decl_dict
 
 non terminal dict_context,seq_context,bi_operator,value_list,seq_index,seq_type,seq_expr,seq_literal_2,seq_literal;
 
-non terminal basic_data_type,data_literal,aggregate_data_type,top_type,tdef_assign,func_call;
+non terminal data_literal,aggregate_data_type,top_type,tdef_assign,func_call;
 
 non terminal key_type,value_literal,top,value_type,char_expr,char_literal,expr_list;
 
-non terminal boolean,other_variable_list,other_variable,bool_literal,key_literal,top_literal;
+non terminal boolean,bool_literal,key_literal,top_literal;
 
 non terminal aggre_literal,aggre_type,num_value_list,bool_value_list,compare_operator,assignment;
 
@@ -414,7 +414,6 @@ bool_expr::= bool_term
             |basic_term all_bool_operator basic_term con_operator bool_expr
 
             |NOT bool_expr
-
 
             |in_expr
             |in_expr  con_operator bool_expr
