@@ -46,6 +46,7 @@
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" default="true" project-jdk-name="1.6" project-jdk-type="JavaSDK" />
+
   <component name="masterDetails">
     <states>
       <state key="ProjectJDKs.UI">
@@ -62,4 +63,5 @@
       </state>
     </states>
   </component>
+
 </project>
