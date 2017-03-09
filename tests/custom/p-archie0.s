@@ -58,7 +58,7 @@ fdef archie(inseq:asda){
   return haha*432798+33;
 }:seq<top>;
 		
-fdef archie(inseq:asda){
+fdef archie(inseq:seq<wwt>){
   alias seq<char> string;
   alias seq<top> hahah;
   alias xiaofeng ku;

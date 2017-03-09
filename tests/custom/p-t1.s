@@ -5,8 +5,8 @@ main {
   b:bool;
 
   if (s1 < s2 || s1 = s2) then
-    # b  :=  s1 + s2 / (s1 + s2) <= 30;
-    a:=1;
+     b  :=  s1 + s2 / (s1 + s2) <= 30;
+    a:=(s1+s2)+4;
   fi
 
   return;
@@ -19,6 +19,3 @@ fdef sum(i:int, j:int) {
 fdef sum(i:float, j:float) {
      return i + j;
 } : float;
-
-
-

@@ -11,7 +11,8 @@ main {
   tmp:string;
 
   loop
-     if (i<books.len) then
+    # if (i<books.len) then
+    if (i<books.len) then
       break;
      fi
      tmp := books[i];

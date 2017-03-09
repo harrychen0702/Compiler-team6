@@ -1,3 +1,5 @@
+//Written by Hao Chen, XiaoFeng Fu, And Wentao Wei
+
 import java_cup.runtime.*;//预先声明
 //import sym;
 parser code
@@ -40,29 +42,36 @@ terminal LEFT_SHARP,LEFT_SHARP_EQUAL,EQUAL,NOT_EQUAL,LEFT_SQUARE_BRACKET,RIGHT_S
 //************Nonterminal***************
 non terminal program, main_function, other_functions,function;
 
-non terminal declaration,expr,stmt,stmts,stmts_loop,num_expr,bool_expr,con_expr,exprs;
+non terminal declaration,term,stmt,stmts,stmts_loop,num_expr,bool_expr,con_expr,expr;
 
-non terminal stmt_return,stmt_break,stmt_ifelse,stmt_loop,num_literal,num_type,primitive_type,primitive_literal,seq_literal,dict_literal;
+non terminal stmt_return,stmt_break,stmt_ifelse,stmt_loop,num_literal,num_type,primitive_type,primitive_literal,seq_literal_1,dict_literal;
 
 non terminal declaration_list_type,declaration_list_func,decl_variable,decl_dict,decl_seq,seq_value,decl_tdef,decl_alias,decl_fdef,decl_tdef_assign;
 
-non terminal dict_context,seq_context,bi_operator,value_list,seq_index,seq_type,seq_expr,seq_literal_2;
+non terminal dict_context,seq_context,bi_operator,value_list,seq_index,seq_type,seq_expr,seq_literal_2,seq_literal;
 
 non terminal basic_data_type,data_literal,aggregate_data_type,top_type,tdef_assign,func_call;
 
-non terminal key_type,value_literal,top,value_type,char_expr,char_value_list,expr_list;
+non terminal key_type,value_literal,top,value_type,char_expr,char_literal,expr_list;
 
-non terminal num_operator,bool_operator,boolean,other_variable_list,other_variable,bool_literal,key_literal,top_literal;
+non terminal boolean,other_variable_list,other_variable,bool_literal,key_literal,top_literal;
 
 non terminal aggre_literal,aggre_type,num_value_list,bool_value_list,compare_operator,assignment;
 
+non terminal basic_term,num_term,bool_term,char_term,seq_term;
+
+non terminal num_operator,bool_operator,char_operator,seq_operator,expr_without_bool;
+
 // Eliminating Ambiguity   终结符的优先级和结合性 (消除二义性)
 //Precedences
+precedence left LEFT_SHARP,LEFT_SHARP_EQUAL,IMPLICATION,RIGHT_SHARP;
 precedence left PLUS, MINUS;
 precedence left TIMES, DIVIDE, MOD;
 precedence left UMINUS;
 precedence left CONCATENATION, AND, OR;
 precedence right POWER, IN;
+precedence left LPAREN, RPAREN;
+//precedence nonassoc EQUAL,NOT_EQUAL,IMPLICATION;
 //precedence nonassoc NOT, L_ANGLE, LESSEQ, EQEQ, NOTEQ, L_SQUARE;
 
 
@@ -93,7 +102,7 @@ stmts::=stmt stmts|
 stmt::= stmt_return SEMICOLON
        |declaration SEMICOLON
        |READ IDENTIFIER SEMICOLON
-       |PRINT exprs SEMICOLON
+       |PRINT expr SEMICOLON
        |assignment SEMICOLON
        |stmt_break SEMICOLON
        |func_call SEMICOLON
@@ -103,25 +112,26 @@ stmt::= stmt_return SEMICOLON
 stmt_break::=BREAK
             |BREAK INT_LITERAL;
 
-stmt_return::=RETURN  exprs
+stmt_return::=RETURN  expr
              |RETURN;
 
-stmt_ifelse::=  IF LPAREN exprs RPAREN THEN stmts ENDIF
-               |IF LPAREN exprs RPAREN THEN stmts ELSE stmts ENDIF;
+stmt_ifelse::=  IF LPAREN expr RPAREN THEN stmts ENDIF
+               |IF LPAREN expr RPAREN THEN stmts ELSE stmts ENDIF;
 
 stmt_loop::= LOOP stmts POOL
             |LOOP POOL;
 
 
-assignment::=IDENTIFIER ASSIGN exprs
-             |IDENTIFIER DOT IDENTIFIER ASSIGN exprs;
+assignment::=IDENTIFIER ASSIGN expr
+             |IDENTIFIER DOT IDENTIFIER ASSIGN expr
+             |IDENTIFIER LEFT_SQUARE_BRACKET IDENTIFIER RIGHT_SQUARE_BRACKET ASSIGN expr;
 //expression list is the same as the type definition assignment
 
 expr_list::=tdef_assign
            |;
 
 
-func_call::=QUESTION exprs QUESTION IDENTIFIER LPAREN expr_list RPAREN;
+func_call::=QUESTION expr QUESTION IDENTIFIER LPAREN expr_list RPAREN;
 
 bool_literal::=TRUE|FALSE;
 
@@ -133,7 +143,6 @@ num_type::=INT|RAT|FLOAT;
 
 num_literal::=INT_LITERAL|FLOAT_LITERAL|RAT_LITERAL;
 
-
 top_literal::=data_literal;
 
 aggre_type::=SEQ LEFT_SHARP seq_type RIGHT_SHARP;
@@ -143,13 +152,14 @@ seq_type::=key_type;
 aggre_literal::=seq_literal
                 |dict_literal;
 
-seq_literal::=LEFT_SQUARE_BRACKET seq_context RIGHT_SQUARE_BRACKET;
+seq_literal ::=seq_literal_2|seq_literal_1;
+seq_literal_1::=LEFT_SQUARE_BRACKET seq_context RIGHT_SQUARE_BRACKET;
 
 seq_literal_2::=IDENTIFIER LEFT_SQUARE_BRACKET seq_index RIGHT_SQUARE_BRACKET;
 
-seq_index::= exprs COLON
-            |COLON exprs
-            |exprs COLON exprs;
+seq_index::= expr COLON
+            |COLON expr
+            |expr COLON expr;
 
 dict_literal::=LBRACE dict_context RBRACE;
 
@@ -169,18 +179,18 @@ dict_context::=key_literal COLON value_literal
               |;
 key_type::=primitive_type|TOP|IDENTIFIER;
 
-key_literal::=exprs;
+key_literal::=expr;
 
 value_type::=key_type;
 
-value_literal::=exprs;
+value_literal::=expr;
 
 //----------------------------Sequence-------------------
 
-decl_seq::=IDENTIFIER COLON SEQ LEFT_SHARP key_type RIGHT_SHARP ASSIGN exprs;
+decl_seq::=IDENTIFIER COLON SEQ LEFT_SHARP key_type RIGHT_SHARP ASSIGN expr;
 
 
-seq_value::=exprs;
+seq_value::=expr;
 
 seq_context::= seq_value
               |seq_value COMMA seq_context
@@ -193,8 +203,8 @@ decl_variable::=IDENTIFIER COLON key_type ASSIGN tdef_assign
                 ;
 
 
-tdef_assign::=exprs|
-              exprs COMMA tdef_assign;
+tdef_assign::=expr|
+              expr COMMA tdef_assign;
 
 decl_tdef::=TDEF IDENTIFIER LBRACE declaration_list_type RBRACE;
 
@@ -218,12 +228,10 @@ declaration_list_type ::= IDENTIFIER COLON top_type
                        ;
 
 declaration_list_func ::= IDENTIFIER COLON top_type
-              //     | IDENTIFIER COLON IDENTIFIER
-               //    | IDENTIFIER COLON IDENTIFIER COMMA declaration_list_func
-                   | IDENTIFIER COLON top_type COMMA declaration_list_func
-                   |
-                   ;
-//--------------------expr and operator---------------
+                        | IDENTIFIER COLON top_type COMMA declaration_list_func
+                        |
+                        ;
+//--------------------term and operator---------------
 bi_operator::=
              PLUS
            | MINUS
@@ -241,104 +249,180 @@ bi_operator::=
            | LEFT_SHARP_EQUAL
            | IN;
 
-bool_operator::= AND
-                |OR
-                |IMPLICATION
-                |EQUAL
-                |NOT_EQUAL
-                |IN;
 
-compare_operator::=LEFT_SHARP
-                   |RIGHT_SHARP
-                   |IMPLICATION
-                   |LEFT_SHARP_EQUAL
-                   |EQUAL
-                   |NOT_EQUAL;
 
-num_expr::=num_value_list;
+
 
 num_value_list::=num_literal
 
             //  |IDENTIFIER DOT LEN
             // |IDENTIFIER num_operator num_value_list
              ;
-num_operator ::=
-             PLUS
-           | MINUS
-           | TIMES
-           | DIVIDE
-           | POWER
-           | CONCATENATION;
 
-exprs::=expr
-        |expr bi_operator exprs;
 
-expr::=num_expr
-      |bool_expr
-      //|con_expr
-      |char_expr
-      |func_call
-      |LPAREN expr RPAREN
-      |LPAREN expr bi_operator exprs RPAREN
-      |IDENTIFIER
-      |NOT expr
-      |seq_literal
-      |seq_literal_2
-      |IDENTIFIER DOT IDENTIFIER
-      |IDENTIFIER DOT LEN
-      |IDENTIFIER LEFT_SQUARE_BRACKET exprs RIGHT_SQUARE_BRACKET
-      |MINUS expr
-   //   |IDENTIFIER LEFT_SQUARE_BRACKET IDENTIFIER RIGHT_SQUARE_BRACKET
 
-      ;
+//term::=num_expr
+//      |bool_expr
+//      //|con_expr
+//      |char_expr
+//      |func_call
+//      |LPAREN term RPAREN
+//      |LPAREN term bi_operator expr RPAREN
+//      |IDENTIFIER
+//      |NOT term
+//      |seq_literal_1
+//      |seq_literal_2
+//      |IDENTIFIER DOT IDENTIFIER
+//      |IDENTIFIER DOT LEN
+//      |IDENTIFIER LEFT_SQUARE_BRACKET expr RIGHT_SQUARE_BRACKET
+//      |MINUS term
+//   //   |IDENTIFIER LEFT_SQUARE_BRACKET IDENTIFIER RIGHT_SQUARE_BRACKET
+//
+//      ;
 
-char_value_list::=STRING_LITERAL
+term::=basic_term;
+
+char_literal::=STRING_LITERAL
                   |CHAR_LITERAL;
 
-char_expr::= char_value_list;
 
 //con_expr::=
-//            seq_literal CONCATENATION seq_literal
-//          | IDENTIFIER CONCATENATION seq_literal
-//          | seq_literal CONCATENATION IDENTIFIER
+//            seq_literal_1 CONCATENATION seq_literal_1
+//          | IDENTIFIER CONCATENATION seq_literal_1
+//          | seq_literal_1 CONCATENATION IDENTIFIER
 //          | IDENTIFIER CONCATENATION IDENTIFIER
-//          | seq_literal CONCATENATION con_expr
+//          | seq_literal_1 CONCATENATION con_expr
 //          | IDENTIFIER CONCATENATION con_expr
-//          | con_expr CONCATENATION seq_literal
+//          | con_expr CONCATENATION seq_literal_1
 //          | con_expr CONCATENATION IDENTIFIER
 //          | con_expr CONCATENATION con_expr
 //          ;
 
 bool_value_list::=bool_literal;
 
-value_list::=bool_value_list|char_value_list|num_value_list|IDENTIFIER;
+value_list::=bool_value_list|char_literal|num_value_list|IDENTIFIER;
 
 //seq_expr::=LEFT_SQUARE_BRACKET RIGHT_SQUARE_BRACKET;
 
-bool_expr::= bool_value_list
-            //bool_value_list bool_operator bool_expr
-            //|num_expr compare_operator num_expr
-             //|key_type IN aggre_literal
+//bool_expr::= bool_value_list
+//            //bool_value_list bool_operator bool_expr
+//            //|num_expr compare_operator num_expr
+//             //|key_type IN aggre_literal
+//             ;
+//         //   |NOT bool_expr;
+
+expr::=basic_term
+       |num_expr
+       |bool_expr
+       |char_expr
+       |seq_expr
+       |LPAREN expr RPAREN;
+
+expr_without_bool::=basic_term
+                   |num_expr
+                   |char_expr
+                   |seq_expr
+                   |LPAREN expr RPAREN;
+basic_term::= IDENTIFIER
+             |IDENTIFIER DOT IDENTIFIER
+             |func_call
+             |IDENTIFIER LEFT_SQUARE_BRACKET IDENTIFIER RIGHT_SQUARE_BRACKET
+             |LPAREN basic_term RPAREN
+             |IDENTIFIER LEFT_SQUARE_BRACKET  INT_LITERAL RIGHT_SQUARE_BRACKET
              ;
-         //   |NOT bool_expr;
+
+num_term::=num_literal
+          |IDENTIFIER DOT LEN;
+
+bool_term::=bool_literal;
+
+char_term::=char_literal;
+            
+seq_term::=seq_literal_1|seq_literal_2;
+
+num_operator ::=
+             PLUS
+           | MINUS
+           | TIMES
+           | DIVIDE
+           | POWER;
+
+bool_operator::= AND
+                |OR
+                |IMPLICATION
+             //   |EQUAL
+             //   |NOT_EQUAL
+                //|IN
+                // expr IN SEQLITERAL
+                // NOT bool expr
+                ;
+
+compare_operator::= LEFT_SHARP
+                   |RIGHT_SHARP
+                  // |IMPLICATION
+                   |LEFT_SHARP_EQUAL
+               //    |EQUAL
+               //    |NOT_EQUAL;
+;
+char_operator::=;
+
+seq_operator::=CONCATENATION;
+
+num_expr::= num_term
+
+           |num_term num_operator num_expr
+           |num_expr num_operator num_expr
 
 
-//other_variable_list ::= other_variable
-//                      | other_variable COMMA other_variable
-//                      | ;
-//
-//other_variable ::= IDENTIFIER
-//                 | NUMBER
-//                 | QUESTION boolean QUESTION IDENTIFIER LPAREN other_variable_list RPAREN;
-//seq.len
-//returntype
-//function name
+           |basic_term num_operator num_expr
+           |basic_term num_operator basic_term
+           |num_term num_operator basic_term
+
+           |MINUS num_expr
+
+           |LPAREN num_expr RPAREN
+           |LPAREN num_expr RPAREN num_operator num_expr
+
+           ;
 
 
 
+bool_expr::= bool_term
+            |bool_term bool_operator bool_expr
+            |basic_term bool_operator basic_term
+            |basic_term bool_operator bool_expr
+            |NOT bool_expr
+
+            |expr_without_bool IN seq_literal
+            |expr_without_bool IN seq_literal bool_operator bool_expr
+
+            |expr_without_bool IN basic_term
+            |expr_without_bool IN basic_term  bool_operator bool_expr
 
 
+            |num_expr compare_operator num_expr
+            |num_expr compare_operator basic_term
+            |basic_term compare_operator num_expr
+            |basic_term compare_operator basic_term
 
+            |expr_without_bool EQUAL expr_without_bool
+            |expr_without_bool NOT_EQUAL expr_without_bool
+
+            |bool_expr bool_operator bool_expr
+            |LPAREN bool_expr RPAREN
+            |LPAREN bool_expr RPAREN bool_operator bool_expr
+          //  |LPAREN bool_expr RPAREN bool_operator LPAREN bool_expr RPAREN
+            ;
+char_expr::=char_literal
+            |LPAREN char_expr RPAREN;
+
+seq_expr::=seq_term
+           |seq_term seq_operator seq_expr
+           |basic_term seq_operator seq_expr
+           |basic_term seq_operator basic_term
+           |seq_term seq_operator basic_term
+           |LPAREN seq_expr RPAREN
+           |LPAREN seq_expr RPAREN seq_operator seq_expr;
 
 
 
