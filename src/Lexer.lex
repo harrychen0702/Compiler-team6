@@ -50,7 +50,7 @@ SecondComment = "/#" [^#]* "#/" | "/#" [#] +"/"
 
 Positive_Integer = [1-9]{Digit}* 
 Negative_Integer = -{Positive_Integer}
-Integer = {Positive_Integer}|{Negative_Integer}|0
+Integer = {Positive_Integer}|0
 Float = {Integer}"."{Digit}+
 Fractional = ({Positive_Integer} | {Negative_Integer}) "/" ({Positive_Integer} | {Negative_Integer})
 Rational = {Fractional} | {Integer} | ({Positive_Integer} | {Negative_Integer}) "_" {Fractional}
@@ -138,7 +138,7 @@ Number = {Rational} | {Float}
 "/" { return symbol(sym.DIVIDE); }
 "^" { return symbol(sym.POWER); }
 
-//**Dict operator
+//**Dict operatorF
 "in" { return symbol(sym.IN); }
 "::" { return symbol(sym.CONCATENATION); }
 ">"  { return symbol(sym.RIGHT_SHARP);}

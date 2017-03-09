@@ -4,7 +4,7 @@ fdef foo( pos : int ) {
 	else 
 		return 1;
 	fi	
-	return ?T?add( ?T?foo( pos-1 ), ?T?foo( pos-2 ) );
+	return ?T?add( ?T?foo( pos-1 ), ?T?foo( pos+2-3+fsjdlk ) );
 } ;
 
 main {

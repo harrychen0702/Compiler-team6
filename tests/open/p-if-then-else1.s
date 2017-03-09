@@ -15,7 +15,10 @@ fdef foo( pos : int ) {
 } : int;
 
 main {
-	pred : bool := T;
+	pred : bool := 3=>4;
+	pred : bool := 3<4;
+	pred : bool := 3<=4;
+	pred : bool := 3>4;
 	print ?pred?foo( 13 );
 	return;
 };
