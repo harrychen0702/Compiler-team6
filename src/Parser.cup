@@ -40,17 +40,17 @@ terminal LEFT_SHARP,LEFT_SHARP_EQUAL,EQUAL,NOT_EQUAL,LEFT_SQUARE_BRACKET,RIGHT_S
 //************Nonterminal***************
 non terminal program, main_function, other_functions,function;
 
-non terminal declaration,expr,stmt,stmts,num_expr,bool_expr,con_expr,exprs;
+non terminal declaration,expr,stmt,stmts,stmts_loop,num_expr,bool_expr,con_expr,exprs;
 
 non terminal stmt_return,stmt_break,stmt_ifelse,stmt_loop,num_literal,num_type,primitive_type,primitive_literal,seq_literal,dict_literal;
 
-non terminal declaration_list_type,declaration_list_func,decl_primitive,decl_dict,decl_seq,seq_value,decl_tdef,decl_alias,decl_fdef,decl_tdef_assign;
+non terminal declaration_list_type,declaration_list_func,decl_variable,decl_dict,decl_seq,seq_value,decl_tdef,decl_alias,decl_fdef,decl_tdef_assign;
 
 non terminal dict_context,seq_context,bi_operator,value_list,seq_index,seq_type,seq_expr,seq_literal_2;
 
-non terminal basic_data_type,data_literal,aggregate_data_type,data_type,tdef_assign,func_call;
+non terminal basic_data_type,data_literal,aggregate_data_type,top_type,tdef_assign,func_call;
 
-non terminal key,value,top,value_type,char_expr,char_value_list,expr_list;
+non terminal key_type,value_literal,top,value_type,char_expr,char_value_list,expr_list;
 
 non terminal num_operator,bool_operator,boolean,other_variable_list,other_variable,bool_literal,key_literal,top_literal;
 
@@ -80,19 +80,15 @@ program ::= main_function
           | main_function other_functions
           | other_functions main_function other_functions;
 
+other_functions::= declaration SEMICOLON
+                  |declaration SEMICOLON other_functions;
 
 main_function::=MAIN LBRACE stmts RBRACE SEMICOLON;
 //---------------------------stmt-------------------
+
 stmts::=stmt stmts|
         stmt;
 
-//stmt::=stmt_return SEMICOLON
-//       |declaration SEMICOLON
-//       |READ IDENTIFIER SEMICOLON
-//       |PRINT exprs SEMICOLON
-//       |assignment SEMICOLON;
-
-stmt_return::=RETURN  exprs|RETURN;
 
 stmt::= stmt_return SEMICOLON
        |declaration SEMICOLON
@@ -107,6 +103,9 @@ stmt::= stmt_return SEMICOLON
 stmt_break::=BREAK
             |BREAK INT_LITERAL;
 
+stmt_return::=RETURN  exprs
+             |RETURN;
+
 stmt_ifelse::=  IF LPAREN exprs RPAREN THEN stmts ENDIF
                |IF LPAREN exprs RPAREN THEN stmts ELSE stmts ENDIF;
 
@@ -116,19 +115,11 @@ stmt_loop::= LOOP stmts POOL
 
 assignment::=IDENTIFIER ASSIGN exprs
              |IDENTIFIER DOT IDENTIFIER ASSIGN exprs;
-
-
-other_functions::= declaration SEMICOLON
-                  |declaration SEMICOLON other_functions;
-
-//other_functions::= declaration SEMICOLON
-//                  |declaration SEMICOLON other_functions;
-
-
-//function::=decl_fdef SEMICOLON;
+//expression list is the same as the type definition assignment
 
 expr_list::=tdef_assign
            |;
+
 
 func_call::=QUESTION exprs QUESTION IDENTIFIER LPAREN expr_list RPAREN;
 
@@ -142,13 +133,12 @@ num_type::=INT|RAT|FLOAT;
 
 num_literal::=INT_LITERAL|FLOAT_LITERAL|RAT_LITERAL;
 
-top::=data_type;
 
 top_literal::=data_literal;
 
 aggre_type::=SEQ LEFT_SHARP seq_type RIGHT_SHARP;
 
-seq_type::=key|IDENTIFIER;
+seq_type::=key_type;
 
 aggre_literal::=seq_literal
                 |dict_literal;
@@ -157,61 +147,51 @@ seq_literal::=LEFT_SQUARE_BRACKET seq_context RIGHT_SQUARE_BRACKET;
 
 seq_literal_2::=IDENTIFIER LEFT_SQUARE_BRACKET seq_index RIGHT_SQUARE_BRACKET;
 
-seq_index::=exprs COLON
+seq_index::= exprs COLON
             |COLON exprs
             |exprs COLON exprs;
-
-            //  |IDENTIFIER LEFT_SQUARE_BRACKET num_value_list COLON
-            //  |IDENTIFIER LEFT_SQUARE_BRACKET num_value_list COLON num_value_list
-            //  |IDENTIFIER LEFT_SQUARE_BRACKET COLON num_value_list
 
 dict_literal::=LBRACE dict_context RBRACE;
 
 data_literal::=primitive_literal
                |aggre_literal
                ;
-data_type::=primitive_type|aggre_type;
+top_type::=key_type|aggre_type;
 
 
 //--------------------------------dictionary---------------------
-decl_dict::=IDENTIFIER COLON DICT LEFT_SHARP key COMMA value_type RIGHT_SHARP ASSIGN LBRACE dict_context RBRACE
-            |IDENTIFIER COLON DICT LEFT_SHARP key COMMA value_type RIGHT_SHARP ASSIGN IDENTIFIER;
+decl_dict::=IDENTIFIER COLON DICT LEFT_SHARP key_type COMMA value_type RIGHT_SHARP ASSIGN LBRACE dict_context RBRACE
+            |IDENTIFIER COLON DICT LEFT_SHARP key_type COMMA value_type RIGHT_SHARP ASSIGN IDENTIFIER;
 
 //
-dict_context::=key_literal COLON value
-              |key_literal COLON value COMMA dict_context
+dict_context::=key_literal COLON value_literal
+              |key_literal COLON value_literal COMMA dict_context
               |;
-key::=primitive_type|TOP;
+key_type::=primitive_type|TOP|IDENTIFIER;
 
-key_literal::=num_expr;
+key_literal::=exprs;
 
-value_type::=top;
+value_type::=key_type;
 
-value::=exprs;
+value_literal::=exprs;
 
 //----------------------------Sequence-------------------
 
-decl_seq::=//IDENTIFIER COLON SEQ LEFT_SHARP key RIGHT_SHARP ASSIGN seq_literal
-           IDENTIFIER COLON SEQ LEFT_SHARP key RIGHT_SHARP ASSIGN exprs
-           //|IDENTIFIER COLON SEQ LEFT_SHARP key RIGHT_SHARP ASSIGN IDENTIFIER
-           //|IDENTIFIER COLON SEQ LEFT_SHARP IDENTIFIER RIGHT_SHARP ASSIGN IDENTIFIER
-           |IDENTIFIER COLON SEQ LEFT_SHARP IDENTIFIER RIGHT_SHARP ASSIGN exprs;
-           //|IDENTIFIER COLON SEQ LEFT_SHARP IDENTIFIER RIGHT_SHARP ASSIGN seq_literal;
+decl_seq::=IDENTIFIER COLON SEQ LEFT_SHARP key_type RIGHT_SHARP ASSIGN exprs;
+
 
 seq_value::=exprs;
 
 seq_context::= seq_value
               |seq_value COMMA seq_context
-             // |IDENTIFIER
               |;
 
 
 //--------------------declaration------------------
-decl_primitive::=IDENTIFIER COLON key ASSIGN exprs
-                |IDENTIFIER COLON key
-                |IDENTIFIER COLON IDENTIFIER;
+decl_variable::=IDENTIFIER COLON key_type ASSIGN tdef_assign
+                |IDENTIFIER COLON key_type
+                ;
 
-decl_tdef_assign::=IDENTIFIER COLON IDENTIFIER ASSIGN tdef_assign;
 
 tdef_assign::=exprs|
               exprs COMMA tdef_assign;
@@ -219,33 +199,28 @@ tdef_assign::=exprs|
 decl_tdef::=TDEF IDENTIFIER LBRACE declaration_list_type RBRACE;
 
 decl_fdef::=FDEF IDENTIFIER LPAREN declaration_list_func RPAREN LBRACE stmts RBRACE
-            |FDEF IDENTIFIER LPAREN declaration_list_func RPAREN LBRACE stmts RBRACE COLON data_type;
+            |FDEF IDENTIFIER LPAREN declaration_list_func RPAREN LBRACE stmts RBRACE COLON top_type;
 
 
 
 declaration ::= decl_dict
-              | decl_primitive
+              | decl_variable
               | decl_seq
               | decl_alias
               | decl_tdef
               | decl_fdef
-              | decl_tdef_assign
               ;
 
-decl_alias::=ALIAS IDENTIFIER IDENTIFIER
-            |ALIAS data_type IDENTIFIER
-            ;
+decl_alias::=ALIAS top_type IDENTIFIER;
 
-declaration_list_type ::= IDENTIFIER COLON data_type
-                   | IDENTIFIER COLON IDENTIFIER
-                   | IDENTIFIER COLON IDENTIFIER COMMA declaration_list_type
-                   | IDENTIFIER COLON data_type COMMA declaration_list_type
-                   ;
+declaration_list_type ::= IDENTIFIER COLON top_type
+                       | IDENTIFIER COLON top_type COMMA declaration_list_type
+                       ;
 
-declaration_list_func ::= IDENTIFIER COLON data_type
-                   | IDENTIFIER COLON IDENTIFIER
-                   | IDENTIFIER COLON IDENTIFIER COMMA declaration_list_func
-                   | IDENTIFIER COLON data_type COMMA declaration_list_func
+declaration_list_func ::= IDENTIFIER COLON top_type
+              //     | IDENTIFIER COLON IDENTIFIER
+               //    | IDENTIFIER COLON IDENTIFIER COMMA declaration_list_func
+                   | IDENTIFIER COLON top_type COMMA declaration_list_func
                    |
                    ;
 //--------------------expr and operator---------------
@@ -343,7 +318,8 @@ value_list::=bool_value_list|char_value_list|num_value_list|IDENTIFIER;
 bool_expr::= bool_value_list
             //bool_value_list bool_operator bool_expr
             //|num_expr compare_operator num_expr
-             |key IN aggre_literal;
+             //|key_type IN aggre_literal
+             ;
          //   |NOT bool_expr;
 
 

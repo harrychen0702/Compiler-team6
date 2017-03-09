@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e69e029e-b167-428e-9747-45086e87db88" name="Default" comment="testing vcs function on intellij">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/backup/Lexer.lex" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/backup/Parser.cup" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test1/Lexer.lex" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test1/Parser.cup" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Lexer.java" afterPath="$PROJECT_DIR$/Lexer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Lexer.lex" afterPath="$PROJECT_DIR$/Lexer.lex" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Parser.cup" afterPath="$PROJECT_DIR$/Parser.cup" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../tests/custom/p-archie0.s" afterPath="$PROJECT_DIR$/../tests/custom/p-archie0.s" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../tests/open/p-fib.s" afterPath="$PROJECT_DIR$/../tests/open/p-fib.s" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../tests/open/p-function0.s" afterPath="$PROJECT_DIR$/../tests/open/p-function0.s" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../tests/open/p-if-then-else0.s" afterPath="$PROJECT_DIR$/../tests/open/p-if-then-else0.s" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,12 +26,22 @@
       <file leaf-file-name="Parser.cup" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Parser.cup">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="313" column="64" lean-forward="true" selection-start-line="313" selection-start-column="64" selection-end-line="313" selection-end-column="64" />
+            <state relative-caret-position="310">
+              <caret line="216" column="35" lean-forward="false" selection-start-line="216" selection-start-column="35" selection-end-line="216" selection-end-column="35" />
               <folding>
-                <marker date="1489006853230" expanded="true" signature="61:147" ph="{...}" />
-                <marker date="1489006853230" expanded="true" signature="194:350" ph="{...}" />
+                <marker date="1489075297365" expanded="true" signature="61:147" ph="{...}" />
+                <marker date="1489075297365" expanded="true" signature="194:350" ph="{...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="p-alice.s" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../tests/open/p-alice.s">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="12" lean-forward="true" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -39,7 +49,7 @@
       <file leaf-file-name="Lexer.lex" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Lexer.lex">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
+            <state relative-caret-position="-460">
               <caret line="52" column="29" lean-forward="false" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
               <folding />
             </state>
@@ -56,21 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Lexer.lex" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test1/Lexer.lex">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-703">
-              <caret line="45" column="24" lean-forward="false" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="p-if-then-else0.s" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../tests/open/p-if-then-else0.s">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="90">
-              <caret line="6" column="48" lean-forward="false" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="48" />
+              <caret line="6" column="58" lean-forward="false" selection-start-line="6" selection-start-column="58" selection-end-line="6" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -89,39 +89,21 @@
       <file leaf-file-name="p-fib.s" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../tests/open/p-fib.s">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="28" lean-forward="false" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
+            <state relative-caret-position="180">
+              <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="p-alice.s" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../tests/open/p-alice.s">
+      <file leaf-file-name="Lexer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Lexer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="p-archie0.s" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../tests/custom/p-archie0.s">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-12">
-              <caret line="56" column="13" lean-forward="false" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Parser-for-testing-only.cup" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Parser-for-testing-only.cup">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-770">
-              <caret line="72" column="47" lean-forward="false" selection-start-line="72" selection-start-column="47" selection-end-line="72" selection-end-column="47" />
-              <folding />
+            <state relative-caret-position="165">
+              <caret line="62" column="27" lean-forward="false" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="27" />
+              <folding>
+                <marker date="1489075243526" expanded="true" signature="11678:11794" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -130,15 +112,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>string</find>
-      <find>data_type</find>
-      <find>LBRACE</find>
-      <find>question</find>
-      <find>func_</find>
-      <find>!</find>
-      <find>expr</find>
-      <find>exprs</find>
-      <find>num_literal</find>
       <find>*</find>
       <find>lp</find>
       <find>assign</find>
@@ -154,12 +127,21 @@
       <find>seq_value</find>
       <find>func_call</find>
       <find>expr_list</find>
-      <find>tdef_assign</find>
       <find>IDENTIFIER DOT LEN</find>
       <find>tdef_as</find>
       <find>+</find>
-      <find>MINUS</find>
       <find>int</find>
+      <find>MINUS</find>
+      <find>tdef_</find>
+      <find>tdef_assign</find>
+      <find>key</find>
+      <find>key_type</find>
+      <find>IDENTIFIER COLON IDENTIFIER</find>
+      <find>decl_tdef_assign</find>
+      <find>decl_primitive</find>
+      <find>data_type</find>
+      <find>top</find>
+      <find>top_type</find>
     </findStrings>
     <replaceStrings>
       <replace>num_value_list</replace>
@@ -183,10 +165,10 @@
         <option value="$PROJECT_DIR$/../tests/open/p-function0.s" />
         <option value="$PROJECT_DIR$/../tests/custom/p-archie0.s" />
         <option value="$PROJECT_DIR$/Lexer.lex" />
-        <option value="$PROJECT_DIR$/Parser.cup" />
-        <option value="$PROJECT_DIR$/../tests/open/p-if-then-else0.s" />
         <option value="$PROJECT_DIR$/../tests/open/p-if-then-else1.s" />
         <option value="$PROJECT_DIR$/../tests/open/p-fib.s" />
+        <option value="$PROJECT_DIR$/../tests/open/p-if-then-else0.s" />
+        <option value="$PROJECT_DIR$/Parser.cup" />
       </list>
     </option>
   </component>
@@ -197,8 +179,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="65" />
-    <option name="y" value="273" />
+    <option name="x" value="80" />
+    <option name="y" value="148" />
     <option name="width" value="1472" />
     <option name="height" value="828" />
   </component>
@@ -231,20 +213,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -252,7 +220,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tests/custom/p-archie0.s" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tests/open/p-alice.s" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="js.eslint.eslintPackage" value="" />
@@ -721,7 +689,7 @@
       <workItem from="1488886291991" duration="862000" />
       <workItem from="1488890148272" duration="4012000" />
       <workItem from="1488911464274" duration="4700000" />
-      <workItem from="1488924220869" duration="42833000" />
+      <workItem from="1488924220869" duration="48873000" />
     </task>
     <task id="LOCAL-00001" summary="testing vcs function on intellij">
       <created>1488677887797</created>
@@ -734,10 +702,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66676000" />
+    <option name="totallyTimeSpent" value="72716000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="273" width="1472" height="828" extended-state="0" />
+    <frame x="80" y="148" width="1472" height="828" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -826,8 +794,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1489006853230" expanded="true" signature="61:147" ph="{...}" />
-            <marker date="1489006853230" expanded="true" signature="194:350" ph="{...}" />
+            <marker date="1489075297365" expanded="true" signature="61:147" ph="{...}" />
+            <marker date="1489075297365" expanded="true" signature="194:350" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -861,8 +829,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1489006853230" expanded="true" signature="61:147" ph="{...}" />
-            <marker date="1489006853230" expanded="true" signature="194:350" ph="{...}" />
+            <marker date="1489075297365" expanded="true" signature="61:147" ph="{...}" />
+            <marker date="1489075297365" expanded="true" signature="194:350" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -904,8 +872,8 @@
         <state relative-caret-position="342">
           <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
-            <marker date="1489006853230" expanded="true" signature="61:147" ph="{...}" />
-            <marker date="1489006853230" expanded="true" signature="194:350" ph="{...}" />
+            <marker date="1489075297365" expanded="true" signature="61:147" ph="{...}" />
+            <marker date="1489075297365" expanded="true" signature="194:350" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -931,8 +899,8 @@
         <state relative-caret-position="342">
           <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
-            <marker date="1489006853230" expanded="true" signature="61:147" ph="{...}" />
-            <marker date="1489006853230" expanded="true" signature="194:350" ph="{...}" />
+            <marker date="1489075297365" expanded="true" signature="61:147" ph="{...}" />
+            <marker date="1489075297365" expanded="true" signature="194:350" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -958,8 +926,8 @@
         <state relative-caret-position="1140">
           <caret line="60" column="16" lean-forward="false" selection-start-line="60" selection-start-column="16" selection-end-line="60" selection-end-column="16" />
           <folding>
-            <marker date="1489006853230" expanded="true" signature="61:147" ph="{...}" />
-            <marker date="1489006853230" expanded="true" signature="194:350" ph="{...}" />
+            <marker date="1489075297365" expanded="true" signature="61:147" ph="{...}" />
+            <marker date="1489075297365" expanded="true" signature="194:350" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -985,8 +953,8 @@
         <state relative-caret-position="817">
           <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding>
-            <marker date="1489006853230" expanded="true" signature="61:147" ph="{...}" />
-            <marker date="1489006853230" expanded="true" signature="194:350" ph="{...}" />
+            <marker date="1489075297365" expanded="true" signature="61:147" ph="{...}" />
+            <marker date="1489075297365" expanded="true" signature="194:350" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1012,8 +980,8 @@
         <state relative-caret-position="627">
           <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
-            <marker date="1489006853230" expanded="true" signature="61:147" ph="{...}" />
-            <marker date="1489006853230" expanded="true" signature="194:350" ph="{...}" />
+            <marker date="1489075297365" expanded="true" signature="61:147" ph="{...}" />
+            <marker date="1489075297365" expanded="true" signature="194:350" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1038,8 +1006,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1489006853230" expanded="true" signature="61:147" ph="{...}" />
-            <marker date="1489006853230" expanded="true" signature="194:350" ph="{...}" />
+            <marker date="1489075297365" expanded="true" signature="61:147" ph="{...}" />
+            <marker date="1489075297365" expanded="true" signature="194:350" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1072,8 +1040,8 @@
         <state relative-caret-position="223">
           <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
           <folding>
-            <marker date="1489006853230" expanded="true" signature="61:147" ph="{...}" />
-            <marker date="1489006853230" expanded="true" signature="194:350" ph="{...}" />
+            <marker date="1489075297365" expanded="true" signature="61:147" ph="{...}" />
+            <marker date="1489075297365" expanded="true" signature="194:350" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1091,8 +1059,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1489006853230" expanded="true" signature="61:147" ph="{...}" />
-            <marker date="1489006853230" expanded="true" signature="194:350" ph="{...}" />
+            <marker date="1489075297365" expanded="true" signature="61:147" ph="{...}" />
+            <marker date="1489075297365" expanded="true" signature="194:350" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1110,78 +1078,6 @@
         <state relative-caret-position="690">
           <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="32" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Lexer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="62" column="27" lean-forward="false" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="27" />
-          <folding>
-            <marker date="1489006894283" expanded="true" signature="2598:2901" ph="{...}" />
-            <marker date="1489006894283" expanded="true" signature="2906:2979" ph="/**...*/" />
-            <marker date="1489006894283" expanded="true" signature="4253:4396" ph="{...}" />
-            <marker date="1489006894283" expanded="true" signature="4476:4737" ph="{...}" />
-            <marker date="1489006894283" expanded="true" signature="4741:4788" ph="/**...*/" />
-            <marker date="1489006894283" expanded="true" signature="10264:10406" ph="{...}" />
-            <marker date="1489006894283" expanded="true" signature="10485:10803" ph="{...}" />
-            <marker date="1489006894283" expanded="true" signature="11185:11273" ph="/**...*/" />
-            <marker date="1489006894283" expanded="true" signature="11678:11794" ph="{...}" />
-            <marker date="1489006894283" expanded="true" signature="11877:12180" ph="{...}" />
-            <marker date="1489006894283" expanded="true" signature="12184:12207" ph="/**...*/" />
-            <marker date="1489006894283" expanded="true" signature="12246:12281" ph="/**...*/" />
-            <marker date="1489006894283" expanded="true" signature="12308:12340" ph="/**...*/" />
-            <marker date="1489006894283" expanded="true" signature="12386:12491" ph="/**...*/" />
-            <marker date="1489006894283" expanded="true" signature="12548:12599" ph="/**...*/" />
-            <marker date="1489006894283" expanded="true" signature="12630:12676" ph="/**...*/" />
-            <marker date="1489006894283" expanded="true" signature="12708:12781" ph="/**...*/" />
-            <marker date="1489006894283" expanded="true" signature="12812:12902" ph="/**...*/" />
-            <marker date="1489006894283" expanded="true" signature="12931:13004" ph="/**...*/" />
-            <marker date="1489006894283" expanded="true" signature="13030:13097" ph="/**...*/" />
-            <marker date="1489006894283" expanded="true" signature="13123:13226" ph="/**...*/" />
-            <marker date="1489006894283" expanded="true" signature="13254:13341" ph="/**...*/" />
-            <marker date="1489006894283" expanded="true" signature="13379:13431" ph="/**...*/" />
-            <marker date="1489006894283" expanded="true" signature="13462:13523" ph="/**...*/" />
-            <marker date="1489006894283" expanded="true" signature="13558:13815" ph="/**...*/" />
-            <marker date="1489006894283" expanded="false" signature="13962:13973" ph=" { " />
-            <marker date="1489006894283" expanded="false" signature="14015:14023" ph=" }" />
-            <marker date="1489006894283" expanded="false" signature="14075:14086" ph=" { " />
-            <marker date="1489006894283" expanded="false" signature="14135:14143" ph=" }" />
-            <marker date="1489006894283" expanded="true" signature="14148:14246" ph="/**...*/" />
-            <marker date="1489006894283" expanded="false" signature="14273:14280" ph=" { " />
-            <marker date="1489006894283" expanded="false" signature="14299:14303" ph=" }" />
-            <marker date="1489006894283" expanded="true" signature="14308:14502" ph="/**...*/" />
-            <marker date="1489006894283" expanded="true" signature="14556:14861" ph="{...}" />
-            <marker date="1489006894283" expanded="true" signature="14866:15043" ph="/**...*/" />
-            <marker date="1489006894283" expanded="true" signature="15100:16829" ph="{...}" />
-            <marker date="1489006894283" expanded="true" signature="16838:16877" ph="/**...*/" />
-            <marker date="1489006894283" expanded="true" signature="16935:17106" ph="{...}" />
-            <marker date="1489006894283" expanded="true" signature="17111:17534" ph="/**...*/" />
-            <marker date="1489006894283" expanded="true" signature="17586:17930" ph="{...}" />
-            <marker date="1489006894283" expanded="true" signature="17935:17984" ph="/**...*/" />
-            <marker date="1489006894283" expanded="false" signature="18013:18020" ph=" { " />
-            <marker date="1489006894283" expanded="false" signature="18042:18046" ph=" }" />
-            <marker date="1489006894283" expanded="true" signature="18051:18140" ph="/**...*/" />
-            <marker date="1489006894283" expanded="false" signature="18182:18189" ph=" { " />
-            <marker date="1489006894283" expanded="false" signature="18215:18219" ph=" }" />
-            <marker date="1489006894283" expanded="true" signature="18224:18298" ph="/**...*/" />
-            <marker date="1489006894283" expanded="false" signature="18329:18336" ph=" { " />
-            <marker date="1489006894283" expanded="false" signature="18404:18408" ph=" }" />
-            <marker date="1489006894283" expanded="true" signature="18413:18726" ph="/**...*/" />
-            <marker date="1489006894283" expanded="false" signature="18764:18771" ph=" { " />
-            <marker date="1489006894283" expanded="false" signature="18804:18808" ph=" }" />
-            <marker date="1489006894283" expanded="true" signature="18813:18874" ph="/**...*/" />
-            <marker date="1489006894283" expanded="false" signature="18904:18911" ph=" { " />
-            <marker date="1489006894283" expanded="false" signature="18942:18946" ph=" }" />
-            <marker date="1489006894283" expanded="true" signature="18951:19491" ph="/**...*/" />
-            <marker date="1489006894283" expanded="true" signature="19534:19748" ph="{...}" />
-            <marker date="1489006894283" expanded="true" signature="19754:20050" ph="/**...*/" />
-            <marker date="1489006894283" expanded="true" signature="20089:20190" ph="{...}" />
-            <marker date="1489006894283" expanded="true" signature="20195:20307" ph="/**...*/" />
-            <marker date="1489006894283" expanded="true" signature="20360:20434" ph="{...}" />
-            <marker date="1489006894283" expanded="true" signature="20439:20678" ph="/**...*/" />
-            <marker date="1489006894283" expanded="true" signature="20752:31079" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1209,34 +1105,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../tests/open/p-alice.s">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../tests/open/p-if-then-else0.s">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="48" lean-forward="false" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../tests/open/p-if-then-else1.s">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="38" lean-forward="false" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../tests/open/p-fib.s">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="28" lean-forward="false" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
           <folding />
         </state>
       </provider>
@@ -1257,21 +1129,71 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../tests/open/p-fib.s">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test1/Parser.cup">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Lexer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="62" column="27" lean-forward="false" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="27" />
+          <folding>
+            <marker date="1489075243526" expanded="true" signature="11678:11794" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Parser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tests/open/p-if-then-else0.s">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="58" lean-forward="false" selection-start-line="6" selection-start-column="58" selection-end-line="6" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Lexer.lex">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
+        <state relative-caret-position="-460">
           <caret line="52" column="29" lean-forward="false" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tests/open/p-alice.s">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="12" lean-forward="true" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Parser.cup">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="313" column="64" lean-forward="true" selection-start-line="313" selection-start-column="64" selection-end-line="313" selection-end-column="64" />
+        <state relative-caret-position="310">
+          <caret line="216" column="35" lean-forward="false" selection-start-line="216" selection-start-column="35" selection-end-line="216" selection-end-column="35" />
           <folding>
-            <marker date="1489006853230" expanded="true" signature="61:147" ph="{...}" />
-            <marker date="1489006853230" expanded="true" signature="194:350" ph="{...}" />
+            <marker date="1489075297365" expanded="true" signature="61:147" ph="{...}" />
+            <marker date="1489075297365" expanded="true" signature="194:350" ph="{...}" />
           </folding>
         </state>
       </provider>
