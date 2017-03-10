@@ -400,20 +400,27 @@ in_expr::=expr_without_bool IN seq_literal
           |expr_without_bool IN basic_term;
 
 bool_expr::= bool_term
-
 //            |bool_term con_operator bool_expr
 //            |basic_term con basic_term
 //            |basic_term con_operator bool_expr
 //            |bool_term bool_operator basic_term
 //            |bool_expr bool_operator basic_term
-            |bool_term bool_operator bool_term
-            |bool_term bool_operator bool_term con_operator bool_expr
-            |basic_term bool_operator bool_term
-            |basic_term bool_operator bool_term con_operator bool_expr
-            |bool_term bool_operator basic_term
-            |bool_term bool_operator basic_term con_operator bool_expr
-            |basic_term all_bool_operator basic_term
-            |basic_term all_bool_operator basic_term con_operator bool_expr
+              |bool_term bool_operator bool_expr
+              |bool_expr con_operator basic_term
+              |basic_term all_bool_operator basic_term
+              |basic_term all_bool_operator  bool_expr
+         //   |bool_term bool_operator bool_term con_operator bool_expr
+            //|basic_term bool_operator bool_term
+           // |basic_term bool_operator bool_term con_operator bool_expr
+           // |bool_term bool_operator basic_term
+         //   |bool_term all_bool_operator basic_term all_bool_operator bool_expr
+        //    |basic_term all_bool_operator bool_expr
+        //    |basic_term all_bool_operator basic_term
+         //   |basic_term all_bool_operator basic_term
+         //   |basic_term all_bool_operator basic_term con_operator bool_expr
+
+          //  |bool_expr all_bool_operator basic_term
+
 
             |NOT bool_expr
 
@@ -424,7 +431,7 @@ bool_expr::= bool_term
             |num_expr compare_operator num_expr
             |num_expr compare_operator num_expr con_operator bool_expr
             |num_expr compare_operator basic_term
-            |num_expr compare_operator basic_term con_operator bool_expr
+            |num_expr compare_operator basic_term all_bool_operator bool_expr
             |basic_term all_bool_operator num_expr
             |basic_term all_bool_operator num_expr con_operator bool_expr
         //    |basic_term compare_operator num_expr con_operator
@@ -437,9 +444,11 @@ bool_expr::= bool_term
 //
 //            |bool_expr bool_operator bool_expr
             |LPAREN bool_expr RPAREN
+           // |LPAREN bool_expr RPAREN con_operator basic_term
             |LPAREN bool_expr RPAREN con_operator bool_expr
-
+           // |LPAREN bool_expr RPAREN all_bool_operator basic_term
             |bool_expr con_operator bool_expr
+
           //  |LPAREN bool_expr RPAREN bool_operator LPAREN bool_expr RPAREN
             ;
 char_expr::=char_literal
