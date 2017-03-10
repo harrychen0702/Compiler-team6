@@ -48,7 +48,7 @@ fdef archie(inseq:asda){
   c:string:=1;
   b:char:='a';
   d:person:='a',"sjakdlaksjdklas",553,334;
-  f:seq<rat>:=[1,2];
+  f:seq<rat>:=[1,2]::d;
   e:dict<int,char>:={1:'1',2:'2',3:'3'};
   f:seq<top>:=["dsjadklsa","3iodos"];
   tdef person{name:string,surname:string,age:int};

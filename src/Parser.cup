@@ -157,7 +157,9 @@ seq_literal_1::=LEFT_SQUARE_BRACKET seq_context RIGHT_SQUARE_BRACKET;
 
 seq_literal_2::=IDENTIFIER LEFT_SQUARE_BRACKET seq_index RIGHT_SQUARE_BRACKET;
 
-seq_index::= expr COLON
+
+seq_index::=
+             expr COLON
             |COLON expr
             |expr COLON expr;
 
@@ -326,9 +328,9 @@ expr_without_bool::=basic_term
 basic_term::= IDENTIFIER
              |IDENTIFIER DOT IDENTIFIER
              |func_call
-             |IDENTIFIER LEFT_SQUARE_BRACKET IDENTIFIER RIGHT_SQUARE_BRACKET
+             |IDENTIFIER LEFT_SQUARE_BRACKET expr RIGHT_SQUARE_BRACKET
              |LPAREN basic_term RPAREN
-             |IDENTIFIER LEFT_SQUARE_BRACKET  INT_LITERAL RIGHT_SQUARE_BRACKET
+           //  |IDENTIFIER LEFT_SQUARE_BRACKET INT_LITERAL RIGHT_SQUARE_BRACKET
              ;
 
 num_term::=num_literal
