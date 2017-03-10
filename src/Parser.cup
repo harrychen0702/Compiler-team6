@@ -421,7 +421,7 @@ bool_expr::= bool_term
 
           //  |bool_expr all_bool_operator basic_term
 
-;
+
             |NOT bool_expr
 
             |in_expr
