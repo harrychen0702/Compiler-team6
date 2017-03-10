@@ -5,7 +5,7 @@ fdef foo( pos : int ) {
 		if (T) then
 			print "fred";
 		else
-			print "spud";
+		 	print "spud";
 		fi
 		if (x && y ) then
 			read b;

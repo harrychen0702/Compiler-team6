@@ -15,7 +15,7 @@ fdef archie(inseq:asda){
   f:seq<top>:=["dsjadklsa","3iodos"];
   tdef person{name:string,surname:string,age:int};
   tdef family{allen:chenxin,chenhao:seq<top>,father:person};
-  return haha*432798+33;
+  return haha*432798+33-?T?foo(?T?sum(10,c,d,f,e),bar);
 }:seq<top>;
 
 fdef archie(inseq:asda){
@@ -28,7 +28,7 @@ fdef archie(inseq:asda){
   c:string:=1;
   b:char:='a';
   d:person:='a',"sjakdlaksjdklas",553,334;
-  f:seq<rat>:=[1,2];
+  f:seq<rat>:=[1,2]::d::([4+d,5+t,8+q]::[d]);
   e:dict<int,char>:={1:'1',2:'2',3:'3'};
   f:seq<top>:=["dsjadklsa","3iodos"];
   tdef person{name:string,surname:string,age:int};
@@ -50,7 +50,7 @@ fdef archie(inseq:asda){
   c:string:=1;
   b:char:='a';
   d:person:='a',"sjakdlaksjdklas",553,334;
-  f:seq<rat>:=[1,2];
+  f:seq<rat>:=[1,2]::[?T?foo(?T?sum(10,c,d,f,e),bar)];
   e:dict<int,char>:={1:'1',2:'2',3:'3'};
   f:seq<top>:=["dsjadklsa","3iodos"];
   tdef person{name:string,surname:string,age:int};
@@ -64,6 +64,11 @@ fdef archie(inseq:seq<wwt>){
   alias xiaofeng ku;
   k:=(k)+(1)*?T?foo(?T?sum(10,c,d,f,e),bar)-dsaklasj/j1leaskldja;
   j:=((((0))));
+  	if (?T?foo(?T?sum(10,c,d,f,e),bar)||?T?foo(?T?sum(10,a[:c],d[b:],f[a:c],e[adsadas+3],g[?T?sum(10,c,d,f,e)*dsaklj+398312-djkasda/3382931]),bar)) then
+  		return 0;
+  	else
+  		return 1;
+  	fi
   wwt:int:=(((b))-?T?foo(?T?sum((10),c,d,f,e),(bar)));
   a:int:=1*c-dsajkldas+312+(b)-?T?foo(?T?sum(10,c,d,f,e),bar);
   c:string:=(((c*c)));
