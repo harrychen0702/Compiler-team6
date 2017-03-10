@@ -58,9 +58,12 @@ fdef archie(inseq:asda){
   return haha*432798+33+?T?sum(10,c,d,f,e)+?T?sum(10,c,d,f,["dsjadklsa","3iodos"]);
   return T;
   #return F&&F&&T||F||?T2?sum(10,c,d,f,f);
-  return (?T?sum(10,c,d,f,["dsjadklsa","3iodos"])||(x||x))||(((x||x)&&x)&&?T?sum(10,c,d,f,["dsjadklsa","3iodos"]));
-  return (((x)||x)||x);
-  return ((x=x)||(x=x))&&((x>y)||(z>k));
+ # return (?T?sum(10,c,d,f,["dsjadklsa","3iodos"])||(x||x))||(((x||x)&&x)&&?T?sum(10,c,d,f,["dsjadklsa","3iodos"]));
+  #return (((x)||x)||x)||(x>y)&&(x>4)&&(x=>4)||(2x+4<4.2-3*6);
+  return (2+4*3)>(6*?t?sum(2));
+  if (((x=x)||(x=x))&&((x>y)||(z>k))||?T?sum(10,c,d,f,["dsjadklsa","3iodos"],a[?T?sum(10,c,d,f,["dsjadklsa","3iodos"]):-2])) then
+   return ;
+  fi
   return ?T?sum(10,c,d,f,e)+ferw/2+3;
 
 }:seq<top>;
